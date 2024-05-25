@@ -1,0 +1,1 @@
+"C:\Program Files\Java\jdk1.5.0_02\bin\keytool.exe" -import -alias trinity -file 

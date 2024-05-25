@@ -1,0 +1,1 @@
+"C:\Program Files\Java\jdk1.5.0\bin\java.exe" -classpath .;./eadesigner.jar com.trinity.ea.EncryptDesignerFile

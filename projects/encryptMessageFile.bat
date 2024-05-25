@@ -1,0 +1,1 @@
+java -classpath .;./eademo.jar com.trinity.ea.EncryptMessageFile

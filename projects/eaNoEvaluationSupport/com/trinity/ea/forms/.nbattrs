@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE attributes PUBLIC "-//NetBeans//DTD DefaultAttributes 1.0//EN" "http://www.netbeans.org/dtds/attributes-1_0.dtd">
+<attributes version="1.0">
+    <fileobject name="CustomerBillingInformationPanel.java">
+        <attr name="class_dependency_javax.swing.JPanel" stringvalue="CustomerBillingInformationPanel"/>
+    </fileobject>
+    <fileobject name="CustomerBillingResponsePanelFailure.java">
+        <attr name="class_dependency_javax.swing.JPanel" stringvalue="CustomerBillingResponsePanelFailure"/>
+    </fileobject>
+    <fileobject name="CustomerBillingResponsePanelSuccess.java">
+        <attr name="class_dependency_javax.swing.JPanel" stringvalue="CustomerBillingResponsePanelSuccess"/>
+    </fileobject>
+    <fileobject name="CustomerShippingInformationPanel.java">
+        <attr name="class_dependency_javax.swing.JPanel" stringvalue="CustomerShippingInformationPanel"/>
+    </fileobject>
+    <fileobject name="PaymentProcessingDialog.java">
+        <attr name="class_dependency_javax.swing.JDialog" stringvalue="PaymentProcessingDialog"/>
+    </fileobject>
+    <fileobject name="PrivacyPolicy.java">
+        <attr name="class_dependency_javax.swing.JDialog" stringvalue="PrivacyPolicy"/>
+    </fileobject>
+    <fileobject name="RefundPolicy.java">
+        <attr name="class_dependency_javax.swing.JDialog" stringvalue="RefundPolicy"/>
+    </fileobject>
+    <fileobject name="SecureOrderInformationPanel.java">
+        <attr name="class_dependency_javax.swing.JPanel" stringvalue="SecureOrderInformationPanel"/>
+    </fileobject>
+    <fileobject name="dlgCustomerBillingResponsePanelFailure.java">
+        <attr name="class_dependency_javax.swing.JDialog" stringvalue="dlgCustomerBillingResponsePanelFailure"/>
+    </fileobject>
+    <fileobject name="dlgCustomerBillingResponsePanelSuccess.java">
+        <attr name="class_dependency_javax.swing.JDialog" stringvalue="dlgCustomerBillingResponsePanelSuccess"/>
+    </fileobject>
+    <fileobject name="dlgEnterRegistrationCode.java">
+        <attr name="class_dependency_javax.swing.JDialog" stringvalue="dlgEnterRegistrationCode"/>
+    </fileobject>
+    <fileobject name="dlgExpiredStartupWindow.java">
+        <attr name="class_dependency_javax.swing.JDialog" stringvalue="dlgExpiredStartupWindow"/>
+    </fileobject>
+    <fileobject name="dlgRegistrationFailure.java">
+        <attr name="class_dependency_javax.swing.JDialog" stringvalue="dlgRegistrationFailure"/>
+    </fileobject>
+    <fileobject name="dlgRegistrationSuccess.java">
+        <attr name="class_dependency_javax.swing.JDialog" stringvalue="dlgRegistrationSuccess"/>
+    </fileobject>
+    <fileobject name="dlgStartupWindow.java">
+        <attr name="class_dependency_javax.swing.JDialog" stringvalue="dlgStartupWindow"/>
+    </fileobject>
+</attributes>

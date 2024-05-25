@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE attributes PUBLIC "-//NetBeans//DTD DefaultAttributes 1.0//EN" "http://www.netbeans.org/dtds/attributes-1_0.dtd">
+<attributes version="1.0">
+    <fileobject name="LeftFillerPanelPaymentFailure.java">
+        <attr name="class_dependency_javax.swing.JPanel" stringvalue="LeftFillerPanelPaymentFailure"/>
+    </fileobject>
+    <fileobject name="PaymentFailedCenterPanel.java">
+        <attr name="class_dependency_javax.swing.JPanel" stringvalue="PaymentFailedCenterPanel"/>
+    </fileobject>
+    <fileobject name="PaymentFailureRightPanel.java">
+        <attr name="class_dependency_javax.swing.JPanel" stringvalue="PaymentFailureRightPanel"/>
+    </fileobject>
+    <fileobject name="PaymentFailureValidationHeaderPanel.java">
+        <attr name="class_dependency_javax.swing.JPanel" stringvalue="PaymentFailureValidationHeaderPanel"/>
+    </fileobject>
+    <fileobject name="PaymentSuccessCenterPanel.java">
+        <attr name="class_dependency_javax.swing.JPanel" stringvalue="PaymentSuccessCenterPanel"/>
+    </fileobject>
+    <fileobject name="PaymentSuccessFooterPanel.java">
+        <attr name="class_dependency_javax.swing.JPanel" stringvalue="PaymentSuccessFooterPanel"/>
+    </fileobject>
+    <fileobject name="PaymentValidationHeaderPanel.java">
+        <attr name="class_dependency_javax.swing.JPanel" stringvalue="PaymentValidationHeaderPanel"/>
+    </fileobject>
+</attributes>

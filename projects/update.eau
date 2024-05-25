@@ -1,0 +1,25 @@
+#update.eau EvaluateAnywhere AutoUpdate 1.0 07/11/2004
+updateid=0
+type=0
+validationCode=3487hKiTlM8
+silent=true
+baseurlchange=false
+baseurlupdates=,,
+lazyUpdate=true
+copyfilesto=eademo.jar,temp/copy/headrttoplogo.jpg,Duke.png
+files=file:/c:/Documents and Settings/aaronsc/studio5se_user/examples_me/obfuscate2/test/eademo.jar,file:/c:/Documents and Settings/aaronsc/studio5se_user/examples_me/obfuscate2/test/headrttoplogo.jpg,file:/c:/Documents and Settings/aaronsc/studio5se_user/examples_me/obfuscate2/test/Duke.png
+overwriteexistingfiles=true,true,true
+msgtitle=Software Update
+msgtext=Software updates were downloaded, and are ready to install. Click the OK button and automatically upgrade to the newest version of your software. Click the Skip button if you do not want to upgrade this program with the newest, most stable version available at this time.
+msgsupport=Please contact a support representative. The Automatic Software Update cannot continue.
+msgerror=Please contact a support representative. The Automatic Software Update cannot continue.
+msgfont=Helvetica,0,12
+msgbtnfont=Helvetica,0,11
+msgfontclr=38,54,69
+msgbtnfontclr=255,255,255
+msgokbtn=OK
+msgokbtnmnem=O
+msgtextalgn=0
+msgskipbtn=Skip
+msgskipbtnmnem=S
+msgmaxattempts=1

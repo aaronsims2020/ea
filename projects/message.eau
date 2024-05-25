@@ -1,0 +1,13 @@
+#message_en.eau EvaluateAnywhere Messaging 1.0 07/07/2004
+updateid=6
+type=0
+baseurlchange=false
+msgtitle=System Message
+msgtext=\r\n\r\nMessage for English Localization
+msgfont=Helvetica,0,13
+msgbtnfont=Helvetica,0,11
+msgfontclr=38,54,69
+msgbtnfontclr=255,255,255
+msgokbtn=OK
+msgokbtnmnem=O
+msgtextalgn=1

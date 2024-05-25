@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE attributes PUBLIC "-//NetBeans//DTD DefaultAttributes 1.0//EN" "http://www.netbeans.org/dtds/attributes-1_0.dtd">
+<attributes version="1.0">
+    <fileobject name="EAScrollBarUI.java">
+        <attr name="class_dependency_javax.swing.plaf.basic.BasicScrollBarUI" stringvalue="EAScrollBarUI"/>
+    </fileobject>
+    <fileobject name="ErrorDialog.java">
+        <attr name="class_dependency_javax.swing.JDialog" stringvalue="ErrorDialog"/>
+    </fileobject>
+    <fileobject name="ErrorPane.java">
+        <attr name="class_dependency_javax.swing.JTextPane" stringvalue="ErrorPane"/>
+    </fileobject>
+    <fileobject name="ImageBackgroundBorder.java">
+        <attr name="class_dependency_javax.swing.border.Border" stringvalue="ImageBackgroundBorder"/>
+    </fileobject>
+    <fileobject name="ImageButton.java">
+        <attr name="class_dependency_javax.swing.JLabel" stringvalue="ImageButton"/>
+    </fileobject>
+    <fileobject name="ImageButtonPanel.java">
+        <attr name="class_dependency_javax.swing.JPanel" stringvalue="ImageButtonPanel"/>
+    </fileobject>
+</attributes>

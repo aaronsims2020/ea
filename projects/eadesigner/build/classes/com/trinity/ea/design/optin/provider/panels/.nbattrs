@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE attributes PUBLIC "-//NetBeans//DTD DefaultAttributes 1.0//EN" "http://www.netbeans.org/dtds/attributes-1_0.dtd">
+<attributes version="1.0">
+    <fileobject name="OptinWizardStep1.java">
+        <attr name="class_dependency_com.trinity.ea.design.common.panel.EAPanel" stringvalue="OptinWizardStep1"/>
+    </fileobject>
+    <fileobject name="CustomOptinProvider.java">
+        <attr name="class_dependency_javax.swing.JPanel" stringvalue="CustomOptinProvider"/>
+    </fileobject>
+    <fileobject name="AWeberOptinProvider.java">
+        <attr name="class_dependency_javax.swing.JPanel" stringvalue="AWeberOptinProvider"/>
+    </fileobject>
+    <fileobject name="OptinWizardMainPanel.java">
+        <attr name="class_dependency_com.trinity.ea.design.common.panel.EAPanel" stringvalue="OptinWizardMainPanel"/>
+    </fileobject>
+    <fileobject name="AWeberProviderMainPanel.java">
+        <attr name="class_dependency_com.trinity.ea.design.common.panel.EAPanel" stringvalue="AWeberProviderMainPanel"/>
+    </fileobject>
+    <fileobject name="GetRespOptinProvider.java">
+        <attr name="class_dependency_javax.swing.JPanel" stringvalue="GetRespOptinProvider"/>
+    </fileobject>
+</attributes>

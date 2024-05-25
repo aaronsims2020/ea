@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE attributes PUBLIC "-//NetBeans//DTD DefaultAttributes 1.0//EN" "http://www.netbeans.org/dtds/attributes-1_0.dtd">
+<attributes version="1.0">
+    <fileobject name="ButtonPanel.java">
+        <attr name="class_dependency_com.trinity.ea.design.common.panel.EAPanel" stringvalue="ButtonPanel"/>
+    </fileobject>
+    <fileobject name="GeneralButtonPanel.java">
+        <attr name="class_dependency_com.trinity.ea.design.common.panel.EAPanel" stringvalue="GeneralButtonPanel"/>
+        <attr name="class_dependency_javax.swing.Icon" stringvalue="GeneralButtonPanel.ColorSwatch"/>
+    </fileobject>
+    <fileobject name="ImageButtonPanel.java">
+        <attr name="class_dependency_com.trinity.ea.design.common.panel.EAPanel" stringvalue="ImageButtonPanel"/>
+        <attr name="class_dependency_javax.swing.Icon" stringvalue="ImageButtonPanel.ColorSwatch"/>
+    </fileobject>
+    <fileobject name="MainButtonsPanel.java">
+        <attr name="class_dependency_com.trinity.ea.design.common.panel.EAPanel" stringvalue="MainButtonsPanel"/>
+    </fileobject>
+    <fileobject name="OKButtonPanel.java">
+        <attr name="class_dependency_com.trinity.ea.design.common.panel.EAPanel" stringvalue="OKButtonPanel"/>
+    </fileobject>
+</attributes>

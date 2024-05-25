@@ -1,0 +1,1 @@
+java -classpath ./eastart.jar com.trinity.ea.EvaluateAnywhere

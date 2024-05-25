@@ -1,0 +1,63 @@
+/*
+ * GRNewUser.java
+ *
+ * Created on May 25, 2004, 4:13 PM
+ */
+
+package com.trinity.ea.design.optin.provider.panels.gr;
+import javax.xml.soap.*;
+import java.net.URL;
+import java.net.MalformedURLException;
+//import java.net.
+/**
+ *
+ * @author  aaronsc
+ */
+public class GRNewAccount {
+    
+    /** Creates a new instance of GRNewUser */
+    public GRNewAccount() 
+    {
+    
+    }
+    
+    public static void createAccount()
+    {
+        try
+        {
+            //Soap Connection
+            SOAPConnectionFactory scf = SOAPConnectionFactory.newInstance();
+            SOAPConnection con = scf.createConnection();
+            MessageFactory mf = MessageFactory.newInstance();
+            SOAPMessage msg = mf.createMessage();
+            //Soap Envelope
+            SOAPPart part = msg.getSOAPPart();
+            SOAPEnvelope envelope = part.getEnvelope();
+            SOAPBody body = envelope.getBody();
+            //Soap Body
+            Name bodyName = envelope.createName("CreateFreeAccountRequest", "CreateFreeAccountRequest", "http://sonata.coffeebreak.com");
+            SOAPBodyElement CreateFreeAccountRequest = body.addBodyElement(bodyName);
+            //Soap request
+            Name requestName = envelope.createName("request");
+            SOAPElement request = CreateFreeAccountRequest.addChildElement(requestName);
+            request.addTextNode("Send updated price list.");
+            msg.saveChanges();
+            // Call the Web Service
+            URL endpoint = new URL("http://www.getresponse.com/web/ModLists/CreateFreeAccountService/");
+            SOAPMessage response = con.call(msg, endpoint);
+            con.close();
+        }
+        catch(Exception e)
+        {
+            e.printStackTrace();
+        }
+    }
+
+    /**
+     * @param args the command line arguments
+     */
+    public static void main(String[] args) {
+        // TODO code application logic here
+    }
+    
+}

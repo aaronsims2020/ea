@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE attributes PUBLIC "-//NetBeans//DTD DefaultAttributes 1.0//EN" "http://www.netbeans.org/dtds/attributes-1_0.dtd">
+<attributes version="1.0">
+    <fileobject name="BottomFillerPanel.java">
+        <attr name="class_dependency_com.trinity.ea.design.common.panel.EAPanel" stringvalue="BottomFillerPanel"/>
+    </fileobject>
+    <fileobject name="BuildConfigurationPanel.java">
+        <attr name="class_dependency_com.trinity.ea.design.common.panel.EAPanel" stringvalue="BuildConfigurationPanel"/>
+    </fileobject>
+    <fileobject name="BuildFeatureSettings.java">
+        <attr name="class_dependency_com.trinity.ea.design.common.panel.EAPanel" stringvalue="BuildFeatureSettings"/>
+    </fileobject>
+    <fileobject name="BuildInstanciateTrialOptionsPanel.java">
+        <attr name="class_dependency_com.trinity.ea.design.common.panel.EAPanel" stringvalue="BuildInstanciateTrialOptionsPanel"/>
+    </fileobject>
+    <fileobject name="BuildOSSetting.java">
+        <attr name="class_dependency_com.trinity.ea.design.common.panel.EAPanel" stringvalue="BuildOSSetting"/>
+    </fileobject>
+    <fileobject name="BuildOutputButtonPanel.java">
+        <attr name="class_dependency_com.trinity.ea.design.common.panel.EAPanel" stringvalue="BuildOutputButtonPanel"/>
+    </fileobject>
+    <fileobject name="BuildOutputLocationPanel.java">
+        <attr name="class_dependency_com.trinity.ea.design.common.panel.EAPanel" stringvalue="BuildOutputLocationPanel"/>
+    </fileobject>
+    <fileobject name="MainBottomPanel.java">
+        <attr name="class_dependency_com.trinity.ea.design.common.panel.EAPanel" stringvalue="MainBottomPanel"/>
+    </fileobject>
+    <fileobject name="MainBuildPanel.java">
+        <attr name="class_dependency_com.trinity.ea.design.common.panel.EAPanel" stringvalue="MainBuildPanel"/>
+    </fileobject>
+</attributes>

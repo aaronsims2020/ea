@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE attributes PUBLIC "-//NetBeans//DTD DefaultAttributes 1.0//EN" "http://www.netbeans.org/dtds/attributes-1_0.dtd">
+<attributes version="1.0">
+    <fileobject name="EADesignerPaymentsPanel.java">
+        <attr name="class_dependency_com.trinity.ea.design.common.panel.EAMasterControlPanel" stringvalue="EADesignerPaymentsPanel"/>
+    </fileobject>
+    <fileobject name="EADesignerPaymentsPanel_bak.java">
+        <attr name="class_dependency_com.trinity.ea.design.common.panel.EAPanel" stringvalue="EADesignerPaymentsPanel_bak"/>
+    </fileobject>
+    <fileobject name="PaymentsEnabledControl.java">
+        <attr name="class_dependency_com.trinity.ea.design.common.panel.EAPanel" stringvalue="PaymentsEnabledControl"/>
+    </fileobject>
+</attributes>

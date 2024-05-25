@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE attributes PUBLIC "-//NetBeans//DTD DefaultAttributes 1.0//EN" "http://www.netbeans.org/dtds/attributes-1_0.dtd">
+<attributes version="1.0">
+    <fileobject name="FontsPanel.java">
+        <attr name="class_dependency_com.trinity.ea.design.common.panel.EAPanel" stringvalue="FontsPanel"/>
+    </fileobject>
+    <fileobject name="MainFontPanel.java">
+        <attr name="class_dependency_com.trinity.ea.design.common.panel.EAPanel" stringvalue="MainFontPanel"/>
+    </fileobject>
+    <fileobject name="OptinFontsPanel.java">
+        <attr name="class_dependency_com.trinity.ea.design.common.panel.EAPanel" stringvalue="OptinFontsPanel"/>
+    </fileobject>
+    <fileobject name="PaymentsFontsPanel.java">
+        <attr name="class_dependency_com.trinity.ea.design.common.panel.EAPanel" stringvalue="PaymentsFontsPanel"/>
+    </fileobject>
+    <fileobject name="RefundFontsPanel.java">
+        <attr name="class_dependency_com.trinity.ea.design.common.panel.EAPanel" stringvalue="RefundFontsPanel"/>
+    </fileobject>
+    <fileobject name="RegistrationFontsPanel.java">
+        <attr name="class_dependency_com.trinity.ea.design.common.panel.EAPanel" stringvalue="RegistrationFontsPanel"/>
+    </fileobject>
+</attributes>

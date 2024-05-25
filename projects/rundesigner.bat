@@ -1,0 +1,3 @@
+rem "c:\j2sdk1.4.2_05\bin\java.exe" -classpath ./lib/eadesigner.jar;./lib/help/jh.jar;./lib/help.jar;./lib/freeimgs.jar com.trinity.ea.design.common.project.NewProject
+"C:\Program Files\Java\jdk1.5.0\bin\java.exe" -classpath ./lib/eadesigner.jar;./lib/help/jh.jar;./lib/help.jar;./lib/freeimgs.jar com.trinity.ea.design.common.project.NewProject
+rem c:\j2sdk1.4.2_05\bin\java.exe -classpath ./lib/eadesigner.jar;./lib/help/jh.jar;./lib/help.jar;./lib/freeimgs.jar com.trinity.ea.design.common.project.NewProject

@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE attributes PUBLIC "-//NetBeans//DTD DefaultAttributes 1.0//EN" "http://www.netbeans.org/dtds/attributes-1_0.dtd">
+<attributes version="1.0">
+    <fileobject name="ErrorImagesPanel.java">
+        <attr name="class_dependency_com.trinity.ea.design.common.panel.EAPanel" stringvalue="ErrorImagesPanel"/>
+        <attr name="class_dependency_javax.swing.Icon" stringvalue="ErrorImagesPanel.ColorSwatch"/>
+    </fileobject>
+    <fileobject name="ImagesPanel.java">
+        <attr name="class_dependency_com.trinity.ea.design.common.panel.EAPanel" stringvalue="ImagesPanel"/>
+        <attr name="class_dependency_javax.swing.Icon" stringvalue="ImagesPanel.ColorSwatch"/>
+    </fileobject>
+    <fileobject name="MainImagesPanel.java">
+        <attr name="class_dependency_com.trinity.ea.design.common.panel.EAPanel" stringvalue="MainImagesPanel"/>
+    </fileobject>
+    <fileobject name="MessagingAutoUpdateImagesPanel.java">
+        <attr name="class_dependency_com.trinity.ea.design.common.panel.EAPanel" stringvalue="MessagingAutoUpdateImagesPanel"/>
+        <attr name="class_dependency_javax.swing.Icon" stringvalue="MessagingAutoUpdateImagesPanel.ColorSwatch"/>
+    </fileobject>
+    <fileobject name="PaymentImagesPanel.java">
+        <attr name="class_dependency_com.trinity.ea.design.common.panel.EAPanel" stringvalue="PaymentImagesPanel"/>
+    </fileobject>
+</attributes>

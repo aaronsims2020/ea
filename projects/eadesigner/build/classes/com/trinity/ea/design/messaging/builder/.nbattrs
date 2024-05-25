@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE attributes PUBLIC "-//NetBeans//DTD DefaultAttributes 1.0//EN" "http://www.netbeans.org/dtds/attributes-1_0.dtd">
+<attributes version="1.0">
+    <fileobject name="AdvancedMessageBuilderConfigurationDialog.java">
+        <attr name="class_dependency_javax.swing.JDialog" stringvalue="AdvancedMessageBuilderConfigurationDialog"/>
+    </fileobject>
+    <fileobject name="BaseURLChangePanel.java">
+        <attr name="class_dependency_com.trinity.ea.design.common.panel.EAMasterControlPanel" stringvalue="BaseURLChangePanel"/>
+    </fileobject>
+    <fileobject name="EAMFileFilter.java">
+        <attr name="class_dependency_java.io.FileFilter" stringvalue="EAMFileFilter"/>
+    </fileobject>
+    <fileobject name="LanguageChooser.java">
+        <attr name="class_dependency_javax.swing.JDialog" stringvalue="LanguageChooser"/>
+    </fileobject>
+    <fileobject name="LanguagePanel.java">
+        <attr name="class_dependency_javax.swing.JPanel" stringvalue="LanguagePanel"/>
+    </fileobject>
+    <fileobject name="MessageBuilder.java">
+        <attr name="class_dependency_javax.swing.JFrame" stringvalue="MessageBuilder"/>
+    </fileobject>
+    <fileobject name="SelectedLocalesPanel.java">
+        <attr name="class_dependency_com.trinity.ea.design.common.panel.EAMasterControlPanel" stringvalue="SelectedLocalesPanel"/>
+    </fileobject>
+</attributes>

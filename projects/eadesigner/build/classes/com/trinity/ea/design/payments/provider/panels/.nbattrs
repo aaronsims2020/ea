@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE attributes PUBLIC "-//NetBeans//DTD DefaultAttributes 1.0//EN" "http://www.netbeans.org/dtds/attributes-1_0.dtd">
+<attributes version="1.0">
+    <fileobject name="AWeberOptinProvider.java">
+        <attr name="class_dependency_javax.swing.JPanel" stringvalue="AWeberOptinProvider"/>
+    </fileobject>
+    <fileobject name="AWeberProviderMainPanel.java">
+        <attr name="class_dependency_com.trinity.ea.design.common.panel.EAPanel" stringvalue="AWeberProviderMainPanel"/>
+    </fileobject>
+    <fileobject name="CustomOptinProvider.java">
+        <attr name="class_dependency_javax.swing.JPanel" stringvalue="CustomOptinProvider"/>
+    </fileobject>
+    <fileobject name="CustomProviderMainPanel.java">
+        <attr name="class_dependency_com.trinity.ea.design.common.panel.EAPanel" stringvalue="CustomProviderMainPanel"/>
+    </fileobject>
+    <fileobject name="FindProviderWizardPanel.java">
+        <attr name="class_dependency_com.trinity.ea.design.common.panel.EAPanel" stringvalue="FindProviderWizardPanel"/>
+    </fileobject>
+    <fileobject name="GoemerchantPaymentProvider.java">
+        <attr name="class_dependency_javax.swing.JPanel" stringvalue="GoemerchantPaymentProvider"/>
+    </fileobject>
+    <fileobject name="PaymentsWizardMainPanel.java">
+        <attr name="class_dependency_com.trinity.ea.design.common.panel.EAPanel" stringvalue="PaymentsWizardMainPanel"/>
+    </fileobject>
+    <fileobject name="PaymentsWizardStep1.java">
+        <attr name="class_dependency_com.trinity.ea.design.common.panel.EAPanel" stringvalue="PaymentsWizardStep1"/>
+    </fileobject>
+    <fileobject name="SkipjackPaymentProvider.java">
+        <attr name="class_dependency_javax.swing.JPanel" stringvalue="SkipjackPaymentProvider"/>
+    </fileobject>
+    <fileobject name="WebPagePaymentProvider.java">
+        <attr name="class_dependency_javax.swing.JPanel" stringvalue="WebPagePaymentProvider"/>
+    </fileobject>
+</attributes>

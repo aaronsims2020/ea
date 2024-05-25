@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE attributes PUBLIC "-//NetBeans//DTD DefaultAttributes 1.0//EN" "http://www.netbeans.org/dtds/attributes-1_0.dtd">
+<attributes version="1.0">
+    <fileobject name="AddFileDialog.java">
+        <attr name="class_dependency_javax.swing.JDialog" stringvalue="AddFileDialog"/>
+    </fileobject>
+    <fileobject name="AutoUpdateConfigPanel.java">
+        <attr name="class_dependency_com.trinity.ea.design.common.panel.EAMasterControlPanel" stringvalue="AutoUpdateConfigPanel"/>
+    </fileobject>
+    <fileobject name="AutoUpdateFileListPanel.java">
+        <attr name="class_dependency_com.trinity.ea.design.common.panel.EAMasterControlPanel" stringvalue="AutoUpdateFileListPanel"/>
+    </fileobject>
+    <fileobject name="FileListPanel.java">
+        <attr name="class_dependency_com.trinity.ea.design.common.panel.EAPanel" stringvalue="FileListPanel"/>
+    </fileobject>
+    <fileobject name="MaxURLsAllowed.java">
+        <attr name="class_dependency_com.trinity.ea.design.common.panel.EAPanel" stringvalue="MaxURLsAllowed"/>
+    </fileobject>
+</attributes>

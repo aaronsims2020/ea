@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE attributes PUBLIC "-//NetBeans//DTD DefaultAttributes 1.0//EN" "http://www.netbeans.org/dtds/attributes-1_0.dtd">
+<attributes version="1.0">
+    <fileobject name="PaymentsUIPanel.java">
+        <attr name="class_dependency_com.trinity.ea.design.common.panel.EAPanel" stringvalue="PaymentsUIPanel"/>
+    </fileobject>
+    <fileobject name="PaymentsCodeSuccessUIPanel.java">
+        <attr name="class_dependency_com.trinity.ea.design.common.panel.EAPanel" stringvalue="PaymentsCodeSuccessUIPanel"/>
+    </fileobject>
+    <fileobject name="PaymentsCodeFailedUIPanel.java">
+        <attr name="class_dependency_com.trinity.ea.design.common.panel.EAPanel" stringvalue="PaymentsCodeFailedUIPanel"/>
+    </fileobject>
+    <fileobject name="PaymentsCodeUIPanel.java">
+        <attr name="class_dependency_com.trinity.ea.design.common.panel.EAPanel" stringvalue="PaymentsCodeUIPanel"/>
+    </fileobject>
+</attributes>

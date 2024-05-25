@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE attributes PUBLIC "-//NetBeans//DTD DefaultAttributes 1.0//EN" "http://www.netbeans.org/dtds/attributes-1_0.dtd">
+<attributes version="1.0">
+    <fileobject name="AUJarVerificationSecurityPanel.java">
+        <attr name="class_dependency_com.trinity.ea.design.common.panel.EAPanel" stringvalue="AUJarVerificationSecurityPanel"/>
+    </fileobject>
+    <fileobject name="AUX500EncryptionConfigurationPanel.java">
+        <attr name="class_dependency_com.trinity.ea.design.common.panel.EAPanel" stringvalue="AUX500EncryptionConfigurationPanel"/>
+    </fileobject>
+    <fileobject name="AWeberOptinProviderPanel.java">
+        <attr name="class_dependency_com.trinity.ea.design.common.panel.EAPanel" stringvalue="AWeberOptinProviderPanel"/>
+    </fileobject>
+    <fileobject name="AddFileDialog.java">
+        <attr name="class_dependency_javax.swing.JDialog" stringvalue="AddFileDialog"/>
+    </fileobject>
+    <fileobject name="AutoUpdateFileListPanel.java">
+        <attr name="class_dependency_com.trinity.ea.design.common.panel.EAPanel" stringvalue="AutoUpdateFileListPanel"/>
+    </fileobject>
+    <fileobject name="BuildFeatureSettings.java">
+        <attr name="class_dependency_com.trinity.ea.design.common.panel.EAPanel" stringvalue="BuildFeatureSettings"/>
+    </fileobject>
+    <fileobject name="CreateGRAccount.java">
+        <attr name="class_dependency_javax.swing.JDialog" stringvalue="CreateGRAccount"/>
+    </fileobject>
+    <fileobject name="DefaultBuildDirectoryDialog.java">
+        <attr name="class_dependency_javax.swing.JDialog" stringvalue="DefaultBuildDirectoryDialog"/>
+    </fileobject>
+    <fileobject name="GetRespOptinProviderPanel.java">
+        <attr name="class_dependency_com.trinity.ea.design.common.panel.EAPanel" stringvalue="GetRespOptinProviderPanel"/>
+    </fileobject>
+    <fileobject name="MJarVerificationSecurityPanel.java">
+        <attr name="class_dependency_com.trinity.ea.design.common.panel.EAPanel" stringvalue="MJarVerificationSecurityPanel"/>
+    </fileobject>
+    <fileobject name="MX500EncryptionConfigurationPanel.java">
+        <attr name="class_dependency_com.trinity.ea.design.common.panel.EAPanel" stringvalue="MX500EncryptionConfigurationPanel"/>
+    </fileobject>
+    <fileobject name="NewProject.java">
+        <attr name="class_dependency_javax.swing.JFrame" stringvalue="NewProject"/>
+    </fileobject>
+    <fileobject name="ProductAutoUpdatePanel.java">
+        <attr name="class_dependency_com.trinity.ea.design.common.panel.EAPanel" stringvalue="ProductAutoUpdatePanel"/>
+    </fileobject>
+    <fileobject name="ProductBuildPanel.java">
+        <attr name="class_dependency_com.trinity.ea.design.common.panel.EAPanel" stringvalue="ProductBuildPanel"/>
+    </fileobject>
+    <fileobject name="ProductBuildSummaryPanel.java">
+        <attr name="class_dependency_com.trinity.ea.design.common.panel.EAPanel" stringvalue="ProductBuildSummaryPanel"/>
+    </fileobject>
+    <fileobject name="ProductEvaluationPanel.java">
+        <attr name="class_dependency_com.trinity.ea.design.common.panel.EAPanel" stringvalue="ProductEvaluationPanel"/>
+    </fileobject>
+    <fileobject name="ProductInformationPanel.java">
+        <attr name="class_dependency_com.trinity.ea.design.common.panel.EAPanel" stringvalue="ProductInformationPanel"/>
+    </fileobject>
+    <fileobject name="ProductMainClassPanel.java">
+        <attr name="class_dependency_com.trinity.ea.design.common.panel.EAPanel" stringvalue="ProductMainClassPanel"/>
+    </fileobject>
+    <fileobject name="ProductMessagingPanel.java">
+        <attr name="class_dependency_com.trinity.ea.design.common.panel.EAPanel" stringvalue="ProductMessagingPanel"/>
+    </fileobject>
+    <fileobject name="ProductOptinPanel.java">
+        <attr name="class_dependency_com.trinity.ea.design.common.panel.EAPanel" stringvalue="ProductOptinPanel"/>
+    </fileobject>
+    <fileobject name="ProductPaymentPanel.java">
+        <attr name="class_dependency_com.trinity.ea.design.common.panel.EAPanel" stringvalue="ProductPaymentPanel"/>
+    </fileobject>
+    <fileobject name="ProjectNotFoundDialog.java">
+        <attr name="class_dependency_javax.swing.JDialog" stringvalue="ProjectNotFoundDialog"/>
+    </fileobject>
+    <fileobject name="SaveDialog.java">
+        <attr name="class_dependency_javax.swing.JDialog" stringvalue="SaveDialog"/>
+    </fileobject>
+    <fileobject name="SkipjackPaymentProvider.java">
+        <attr name="class_dependency_com.trinity.ea.design.common.panel.EAPanel" stringvalue="SkipjackPaymentProvider"/>
+    </fileobject>
+    <fileobject name="UnlistedProviderOptinProviderPanel.java">
+        <attr name="class_dependency_com.trinity.ea.design.common.panel.EAPanel" stringvalue="UnlistedProviderOptinProviderPanel"/>
+    </fileobject>
+    <fileobject name="UnlistedProviderPaymentProviderPanel.java">
+        <attr name="class_dependency_com.trinity.ea.design.common.panel.EAPanel" stringvalue="UnlistedProviderPaymentProviderPanel"/>
+    </fileobject>
+    <fileobject name="WebPagePaymentProvider.java">
+        <attr name="class_dependency_com.trinity.ea.design.common.panel.EAPanel" stringvalue="WebPagePaymentProvider"/>
+    </fileobject>
+</attributes>

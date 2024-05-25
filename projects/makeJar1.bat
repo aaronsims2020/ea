@@ -1,0 +1,1 @@
+jar -cvf ./lib/ea1.jar -C ./temp /

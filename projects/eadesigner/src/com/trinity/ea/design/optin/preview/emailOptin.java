@@ -1,0 +1,1550 @@
+/*
+ * emailOptin.java
+ *
+ * Created on November 15, 2003, 3:33 PM
+ */
+
+package com.trinity.ea.design.optin.preview;
+import javax.swing.*;
+import javax.swing.border.*;
+import java.awt.*;
+import java.awt.event.*;
+import java.net.*;
+import java.util.*;
+import com.trinity.ea.actions.ConfigurationErrorAction;
+import com.trinity.ea.design.common.file.ProjectManager;
+import com.trinity.ea.util.BrowserLauncher;
+import com.trinity.ea.net.WebConnectionRequest;
+import com.trinity.ea.parser.HTTPGETRequestParser;
+import com.trinity.ea.design.optin.preview.PrivacyPolicy;
+import com.trinity.ea.design.optin.preview.gui.swing.ImageButton;
+import java.awt.ComponentOrientation;
+import javax.swing.ImageIcon;
+import java.awt.Color;
+import java.awt.Dimension;
+import java.awt.Font;
+import java.awt.Insets;
+import javax.swing.JTextField;
+import javax.swing.JTextArea;
+import javax.swing.JLabel;
+import javax.swing.JButton;
+import javax.swing.JPanel;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
+import com.trinity.ea.design.optin.preview.gui.swing.ErrorDialog;
+import javax.swing.JOptionPane;
+import java.awt.event.KeyEvent;
+import javax.swing.KeyStroke;
+import java.awt.KeyEventDispatcher;
+import java.awt.KeyboardFocusManager;
+
+/**
+ *
+ * @author  aaronsc Trinity Software
+ * Copyright ©2003-2005 Trinity Software. All rights reserved.
+ */
+public class emailOptin extends javax.swing.JPanel {
+    private ImageIcon btnFace = null;
+    private ImageIcon btnFaceOnClick = null;
+    private ImageIcon btnFaceInFocus = null;
+    private int btnWidth = -1;
+    private int btnHeight = -1;    
+    private boolean isImageButton = false;
+    private Color extBorderColor = new Color(162,186,202);
+    private Color highlightBorderColor1 = new Color(38,54,69);
+    private Color highlightBorderColor2 = new Color(100,132,154);
+    private Color shadowBorderColor1 = new Color(162,182,202);
+    private Color shadowBorderColor2 = new Color(215,226,233);    
+    /** Creates new form emailOptin */
+    public emailOptin() {
+	  updateUIExpressionDefines();
+	  if(ProjectManager.get("btnBarImgButtonsEnabled")!=null)
+	  {
+	  	if(ProjectManager.get("btnBarImgButtonsEnabled").equalsIgnoreCase("true")==true)
+	  	{
+			isImageButton=true;
+		}
+		else
+		{
+			isImageButton=false;
+		}
+	  }
+	  else
+	  {
+		isImageButton=false;
+	  }
+	  if(ProjectManager.get("registrationImgButtonWidth")!=null)
+	  {
+	  	if(ProjectManager.get("registrationImgButtonWidth").equalsIgnoreCase("")==false)
+	  	{
+			try
+			{
+				btnWidth = new Integer(ProjectManager.get("registrationImgButtonWidth")).intValue();
+			}
+			catch(Exception eee)
+			{
+				//eee.printStackTrace();
+				btnWidth = 95;
+			}
+		}
+		else
+		{
+			btnWidth = 95;
+		}
+	  }
+	  else
+	  {
+		btnWidth = 95;
+	  }	  
+	  if(ProjectManager.get("registrationImgButtonHeight")!=null)
+	  {
+	  	if(ProjectManager.get("registrationImgButtonHeight").equalsIgnoreCase("")==false)
+	  	{
+			try
+			{
+				btnHeight = new Integer(ProjectManager.get("registrationImgButtonHeight")).intValue();
+			}
+			catch(Exception eee)
+			{
+				//eee.printStackTrace();
+				btnHeight = 24;
+			}
+		}
+		else
+		{
+			btnHeight = 24;
+		}
+	  }
+	  else
+	  {
+		btnHeight = 24;
+	  }	  
+if(isImageButton==true)
+{
+		if(ProjectManager.get("registrationImgButtonFace")!=null)
+		{
+			if(ProjectManager.get("registrationImgButtonFace").equalsIgnoreCase("")==false)
+			{
+				try
+				{
+					btnFace = new javax.swing.ImageIcon(new URL(ProjectManager.get("registrationImgButtonFace")));
+				}
+				catch(Exception e)
+				{
+					//e.printStackTrace();
+					isImageButton=false;
+				}
+			}
+			else
+			{
+				isImageButton=false;
+			}
+		}
+		else
+		{
+			isImageButton=false;
+		}
+		if(ProjectManager.get("registrationImgButtonFaceOnClick")!=null)
+		{
+			if(ProjectManager.get("registrationImgButtonFaceOnClick").equalsIgnoreCase("")==false)
+			{
+				try
+				{
+					btnFaceOnClick = new javax.swing.ImageIcon(new URL(ProjectManager.get("registrationImgButtonFaceOnClick")));
+
+				}
+				catch(Exception e)
+				{
+					//e.printStackTrace();
+				}
+			}
+		}
+		if(ProjectManager.get("registrationButtonFaceInFocus")!=null)
+		{
+			if(ProjectManager.get("registrationButtonFaceInFocus").equalsIgnoreCase("")==false)
+			{
+				try
+				{
+					btnFaceInFocus = new javax.swing.ImageIcon(new URL(ProjectManager.get("registrationButtonFaceInFocus")));
+				}
+				catch(Exception e)
+				{
+					//e.printStackTrace();
+				}
+			}
+		}
+}
+
+	  if(btnFace!=null)
+	  {
+		if(btnFaceOnClick!=null)
+		{
+			initComponents(true);
+		}
+		else
+		{
+			initComponents(false);
+		}
+	  }
+	  else
+	  {
+        	initComponents(false);
+	  }
+    }
+    
+    /** This method is called from within the constructor to
+     * initialize the form.
+     * WARNING: Do NOT modify this code. The content of this method is
+     * always regenerated by the Form Editor.
+     */
+    private void initComponents(boolean isImgButton) {//GEN-BEGIN:initComponents
+        tfName = new javax.swing.JTextField();
+        tfEMail = new javax.swing.JTextField();
+        lName = new javax.swing.JLabel();
+        lEMail = new javax.swing.JLabel();
+        taDescription = new javax.swing.JTextArea();
+	  if(isImageButton==true)
+	  {
+        	btnImageCancel = new ImageButton(btnFace,btnFaceOnClick,btnFaceInFocus,btnWidth,btnHeight);
+        	btnImageContinue = new ImageButton(btnFace,btnFaceOnClick,btnFaceInFocus,btnWidth,btnHeight);
+		lImagePrivacyPolicy = new ImageButton(btnFace,btnFaceOnClick,btnFaceInFocus,btnWidth,btnHeight);
+	  }
+	  else
+	  {
+        	btnCancel = new javax.swing.JButton();
+        	btnContinue = new javax.swing.JButton();
+		lPrivacyPolicy = new javax.swing.JLabel();
+	  }
+       // lPrivacyPolicy = new javax.swing.JLabel();
+
+        setLayout(null);
+		if(ProjectManager.get("optinTextFieldFont")!=null)
+		{
+			if(ProjectManager.get("optinTextFieldFont").equalsIgnoreCase("")==false)
+			{
+				Object[] tmpArray = getStringArraysFromString(ProjectManager.get("optinTextFieldFont"));
+        			tfName.setFont(new java.awt.Font((String)tmpArray[0], new Integer((String)tmpArray[1]).intValue(),new Integer((String)tmpArray[2]).intValue()));
+				tfEMail.setFont(new java.awt.Font((String)tmpArray[0], new Integer((String)tmpArray[1]).intValue(),new Integer((String)tmpArray[2]).intValue()));
+			}
+		}
+		else
+		{
+			tfName.setFont(new java.awt.Font("Arial", 0, 13));
+			tfEMail.setFont(new java.awt.Font("Arial", 0, 13));
+		}
+		if(ProjectManager.get("optinNameEMailFont")!=null)
+		{
+			if(ProjectManager.get("optinNameEMailFont").equalsIgnoreCase("")==false)
+			{
+				Object[] tmpArray = getStringArraysFromString(ProjectManager.get("optinNameEMailFont"));
+        			lName.setFont(new java.awt.Font((String)tmpArray[0], new Integer((String)tmpArray[1]).intValue(),new Integer((String)tmpArray[2]).intValue()));
+				lEMail.setFont(new java.awt.Font((String)tmpArray[0], new Integer((String)tmpArray[1]).intValue(),new Integer((String)tmpArray[2]).intValue()));
+			}
+		}
+		else
+		{
+			lName.setFont(new java.awt.Font("Arial", 0, 13));
+			lEMail.setFont(new java.awt.Font("Arial", 0, 13));
+		}
+		if(ProjectManager.get("optinDescriptionFont")!=null)
+		{
+			if(ProjectManager.get("optinDescriptionFont").equalsIgnoreCase("")==false)
+			{
+				Object[] tmpArray = getStringArraysFromString(ProjectManager.get("optinDescriptionFont"));
+        			taDescription.setFont(new java.awt.Font((String)tmpArray[0], new Integer((String)tmpArray[1]).intValue(),new Integer((String)tmpArray[2]).intValue()));
+			}
+		}
+		else
+		{
+			taDescription.setFont(new java.awt.Font("Arial", 0, 12));
+		}
+		if(ProjectManager.get("optinPrivacyPolicyFont")!=null)
+		{
+			if(ProjectManager.get("optinPrivacyPolicyFont").equalsIgnoreCase("")==false)
+			{
+				Object[] tmpArray = getStringArraysFromString(ProjectManager.get("optinPrivacyPolicyFont"));
+	  			if(isImageButton==false)
+	  			{  
+      				lPrivacyPolicy.setFont(new java.awt.Font((String)tmpArray[0], new Integer((String)tmpArray[1]).intValue(),new Integer((String)tmpArray[2]).intValue()));
+				}
+			}
+		}
+		else
+		{
+	  		if(isImageButton==false)
+	  		{  
+				lPrivacyPolicy.setFont(new java.awt.Font("Arial", 0, 12));
+			}
+		}
+
+
+///////////////////////////////////////////////
+	  if(isImageButton==true)
+	  {
+		if(ProjectManager.get("optinButtonFont")!=null)
+		{
+			if(ProjectManager.get("optinButtonFont").equalsIgnoreCase("")==false)
+			{
+				Object[] tmpArray = getStringArraysFromString(ProjectManager.get("optinButtonFont"));
+        			btnImageCancel.setFont(new java.awt.Font((String)tmpArray[0], new Integer((String)tmpArray[1]).intValue(),new Integer((String)tmpArray[2]).intValue()));
+				btnImageContinue.setFont(new java.awt.Font((String)tmpArray[0], new Integer((String)tmpArray[1]).intValue(),new Integer((String)tmpArray[2]).intValue()));
+				lImagePrivacyPolicy.setFont(new java.awt.Font((String)tmpArray[0], new Integer((String)tmpArray[1]).intValue(),new Integer((String)tmpArray[2]).intValue()));
+			}
+		}
+		if(ProjectManager.get("optinCancelButtonText")!=null)
+		{
+        		btnImageCancel.setText(replaceUIExpressions(ProjectManager.get("optinCancelButtonText")));
+		}
+		if(ProjectManager.get("optinContinueButtonText")!=null)
+		{
+        		btnImageContinue.setText(replaceUIExpressions(ProjectManager.get("optinContinueButtonText")));
+		}
+		if(ProjectManager.get("optinCancelButtonMnemonic")!=null)
+		{
+	  	  	if(ProjectManager.get("optinCancelButtonMnemonic").equalsIgnoreCase("")==false)
+	  	  	{
+				btnImageCancel.setMnemonic(ProjectManager.get("optinCancelButtonMnemonic").charAt(0));
+			}
+		}
+		if(ProjectManager.get("optinContinueButtonMnemonic")!=null)
+		{
+	  	  	if(ProjectManager.get("optinContinueButtonMnemonic").equalsIgnoreCase("")==false)
+	  	  	{
+				btnImageContinue.setMnemonic(ProjectManager.get("optinContinueButtonMnemonic").charAt(0));
+			}
+		}
+		if(ProjectManager.get("optinPrivacyPolicyMnemonic")!=null)
+		{
+	  	  	if(ProjectManager.get("optinPrivacyPolicyMnemonic").equalsIgnoreCase("")==false)
+	  	  	{
+				lImagePrivacyPolicy.setMnemonic(ProjectManager.get("optinPrivacyPolicyMnemonic").charAt(0));
+			}
+		}
+        	  btnImageCancel.setMaximumSize(new java.awt.Dimension(btnWidth, btnHeight));
+       	  btnImageCancel.setMinimumSize(new java.awt.Dimension(btnWidth, btnHeight));
+       	  btnImageCancel.setPreferredSize(new java.awt.Dimension(btnWidth, btnHeight));
+      	  btnImageCancel.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnImageCancelMouseClicked(evt);
+            }
+        });
+
+        add(btnImageCancel);
+        btnImageCancel.setBounds(10, 100, btnWidth, btnHeight);
+
+      	  btnImageContinue.setMaximumSize(new java.awt.Dimension(btnWidth, btnHeight));
+     	   	  btnImageContinue.setMinimumSize(new java.awt.Dimension(btnWidth, btnHeight));
+     		  btnImageContinue.setPreferredSize(new java.awt.Dimension(btnWidth, btnHeight));
+      	  btnImageContinue.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnImageContinueMouseClicked(evt);
+            }
+        });
+
+        add(btnImageContinue);
+        btnImageContinue.setBounds(210, 100, btnWidth, btnHeight);
+
+
+
+
+	}
+	else
+	{
+		if(ProjectManager.get("optinButtonFont")!=null)
+		{
+			if(ProjectManager.get("optinButtonFont").equalsIgnoreCase("")==false)
+			{
+				Object[] tmpArray = getStringArraysFromString(ProjectManager.get("optinButtonFont"));
+        			btnCancel.setFont(new java.awt.Font((String)tmpArray[0], new Integer((String)tmpArray[1]).intValue(),new Integer((String)tmpArray[2]).intValue()));
+				btnContinue.setFont(new java.awt.Font((String)tmpArray[0], new Integer((String)tmpArray[1]).intValue(),new Integer((String)tmpArray[2]).intValue()));
+			}
+		}
+		if(ProjectManager.get("optinCancelButtonText")!=null)
+		{
+        		btnCancel.setText(replaceUIExpressions(ProjectManager.get("optinCancelButtonText")));
+		}
+		if(ProjectManager.get("optinContinueButtonText")!=null)
+		{
+        		btnContinue.setText(replaceUIExpressions(ProjectManager.get("optinContinueButtonText")));
+		}
+		if(ProjectManager.get("optinCancelButtonMnemonic")!=null)
+		{
+	  	  	if(ProjectManager.get("optinCancelButtonMnemonic").equalsIgnoreCase("")==false)
+	  	  	{
+				btnCancel.setMnemonic(ProjectManager.get("optinCancelButtonMnemonic").charAt(0));
+			}
+		}
+		if(ProjectManager.get("optinContinueButtonMnemonic")!=null)
+		{
+	  	  	if(ProjectManager.get("optinContinueButtonMnemonic").equalsIgnoreCase("")==false)
+	  	  	{
+				btnContinue.setMnemonic(ProjectManager.get("optinContinueButtonMnemonic").charAt(0));
+			}
+		}
+		if(ProjectManager.get("optinPrivacyPolicyMnemonic")!=null)
+		{
+	  	  	if(ProjectManager.get("optinPrivacyPolicyMnemonic").equalsIgnoreCase("")==false)
+	  	  	{
+			lPrivacyPolicy.setFocusable(true); 
+			lPrivacyPolicy.setLabelFor(lPrivacyPolicy); 
+			lPrivacyPolicy.setDisplayedMnemonic(ProjectManager.get("optinPrivacyPolicyMnemonic").charAt(0));
+		  	if(isImageButton==false)
+		  	{
+				setPPKeyManager();
+			}
+			}
+		}
+
+        btnCancel.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCancelActionPerformed(evt);
+            }
+        });
+
+        add(btnCancel);
+        btnCancel.setBounds(100, 100, 93, 26);
+
+        btnContinue.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnContinueActionPerformed(evt);
+            }
+        });
+
+        add(btnContinue);
+        btnContinue.setBounds(203, 100, 102, 26);
+	}
+///////////////////////////////////////////////////////////////////
+
+        add(tfName);
+        tfName.setBounds(100, 40, 205, 20);
+
+        add(tfEMail);
+        tfEMail.setBounds(100, 70, 205, 20);
+
+        if(ProjectManager.get("optinYourNameLabel")!=null)
+        {
+        	lName.setText(replaceUIExpressions(ProjectManager.get("optinYourNameLabel")));
+	  }
+        add(lName);
+        lName.setBounds(10, 40, 90, 20);
+
+        if(ProjectManager.get("optinYourEMailLabel")!=null)
+        {
+        	lEMail.setText(replaceUIExpressions(ProjectManager.get("optinYourEMailLabel")));
+	  }
+        add(lEMail);
+        lEMail.setBounds(10, 70, 90, 20);
+
+        taDescription.setBackground(getBackground());
+        taDescription.setEditable(false);
+        taDescription.setLineWrap(true);
+        if(ProjectManager.get("optinDescription")!=null)
+        {
+        	taDescription.setText(replaceUIExpressions(ProjectManager.get("optinDescription")));
+	  }
+        taDescription.setWrapStyleWord(true);
+        add(taDescription);
+        taDescription.setBounds(10, 10, 320, 21);
+
+
+        if(ProjectManager.get("optinPrivacyPolicyEnabled")!=null)
+        {
+        if(ProjectManager.get("optinPrivacyPolicyEnabled").equalsIgnoreCase("true")==true)
+        {
+	   
+        if(ProjectManager.get("privacyPolicyActionType").equalsIgnoreCase("-1") == false)
+        {   
+	  	try
+        	{
+	  		if(isImageButton==false)
+	  		{  
+                		lPrivacyPolicy.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+			}
+        	}
+        	catch(Exception e)
+        	{
+            	e.printStackTrace();
+        	}
+	  }
+	  if(ProjectManager.get("optinPrivacyPolicyTextColor")!=null)
+	  {
+		if(ProjectManager.get("optinPrivacyPolicyTextColor").equalsIgnoreCase("")==false)
+		{
+			 Object[] tmpArray = getStringArraysFromString(ProjectManager.get("optinPrivacyPolicyTextColor"));
+ 	  		if(isImageButton==false)
+	  		{   
+    		 		lPrivacyPolicy.setForeground(new java.awt.Color(new Integer((String)tmpArray[0]).intValue(), new Integer((String)tmpArray[1]).intValue(),new Integer((String)tmpArray[2]).intValue()));
+			}
+		}
+	  }
+	  else
+	  {
+ 	  		if(isImageButton==false)
+	  		{   
+		  		lPrivacyPolicy.setForeground(new java.awt.Color(0, 0, 153));
+			}
+	  }
+
+	 if(isImageButton==true)
+	 {   
+        lImagePrivacyPolicy.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        if(ProjectManager.get("optinPrivacyPolicyLabel")!=null)
+        {
+        	lImagePrivacyPolicy.setText(replaceUIExpressions(ProjectManager.get("optinPrivacyPolicyLabel")));
+	  }
+	  else
+	  {
+        	lImagePrivacyPolicy.setText("Privacy Policy");
+	  }
+        lImagePrivacyPolicy.setVerticalAlignment(javax.swing.SwingConstants.TOP);
+        lImagePrivacyPolicy.setMaximumSize(new java.awt.Dimension(299, 100));
+        lImagePrivacyPolicy.setMinimumSize(new java.awt.Dimension(299, 100));
+        lImagePrivacyPolicy.setPreferredSize(new java.awt.Dimension(299, 100));
+        lImagePrivacyPolicy.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                lPrivacyPolicyMouseClicked(evt);
+            }
+        });
+
+        add(lImagePrivacyPolicy);
+	
+        lImagePrivacyPolicy.setBounds(110, 100, btnWidth, btnHeight);
+	  }
+	  else
+	  {
+        lPrivacyPolicy.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        if(ProjectManager.get("optinPrivacyPolicyLabel")!=null)
+        {
+        	lPrivacyPolicy.setText(replaceUIExpressions(ProjectManager.get("optinPrivacyPolicyLabel")));
+	  }
+	  else
+	  {
+        	lPrivacyPolicy.setText("Privacy Policy");
+	  }
+        lPrivacyPolicy.setVerticalAlignment(javax.swing.SwingConstants.TOP);
+        lPrivacyPolicy.setMaximumSize(new java.awt.Dimension(299, 100));
+        lPrivacyPolicy.setMinimumSize(new java.awt.Dimension(299, 100));
+        lPrivacyPolicy.setPreferredSize(new java.awt.Dimension(299, 100));
+        lPrivacyPolicy.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                lPrivacyPolicyMouseClicked(evt);
+            }
+        });
+
+        add(lPrivacyPolicy);
+	
+        lPrivacyPolicy.setBounds(0, 100, 100, 20);
+	  }
+	  }
+	  else
+	  {
+	 	if(isImageButton==true)
+	 	{   
+			lImagePrivacyPolicy.setVisible(false);
+		}
+		else
+		{
+			lPrivacyPolicy.setVisible(false);
+		}
+	  }
+	  }
+// Additional initialization code for components
+	setComponentBorders();
+	  if(ProjectManager.get("optinBackgroundColor")!=null)
+	  {
+		if(ProjectManager.get("optinBackgroundColor").equalsIgnoreCase("")==false)
+		{
+			Object[] tmpArray = getStringArraysFromString(ProjectManager.get("optinBackgroundColor"));
+			setBackgroundColor(new java.awt.Color(new Integer((String)tmpArray[0]).intValue(),new Integer((String)tmpArray[1]).intValue(),new Integer((String)tmpArray[2]).intValue()));
+		}
+	  }
+	  if(ProjectManager.get("optinButtonTextColor")!=null)
+	  {
+		if(ProjectManager.get("optinButtonTextColor").equalsIgnoreCase("")==false)
+		{
+			Object[] tmpArray = getStringArraysFromString(ProjectManager.get("optinButtonTextColor"));
+			setButtonTextColor(new java.awt.Color(new Integer((String)tmpArray[0]).intValue(),new Integer((String)tmpArray[1]).intValue(),new Integer((String)tmpArray[2]).intValue()));
+		}
+	  }
+
+// End additional initialization Code for components
+	  	if(isImageButton==true)
+	  	{
+	  		setKeyManager();
+		}
+    }//GEN-END:initComponents
+
+    private void lPrivacyPolicyMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lPrivacyPolicyMouseClicked
+	getPrivacyPolicyAction();
+    }//GEN-LAST:event_lPrivacyPolicyMouseClicked
+
+   private void btnImageCancelMouseClicked(java.awt.event.MouseEvent evt)
+   {
+	getCancelAction();
+   }
+
+private void getPrivacyPolicyAction()
+{
+    if(ProjectManager.get("privacyPolicyActionType")!=null)
+    {
+        if(ProjectManager.get("privacyPolicyActionType").equalsIgnoreCase("0") == true)
+        {
+            try
+            {
+                  if(ProjectManager.get("privacyPolicyAction")!=null)
+                  {
+                 		BrowserLauncher.openURL(ProjectManager.get("privacyPolicyAction"));
+			}
+            }
+            catch(Exception e)
+            {
+                e.printStackTrace();
+            }
+        }
+        else if(ProjectManager.get("privacyPolicyActionType").equalsIgnoreCase("1") == true)
+        {
+		try
+		{
+                  if(ProjectManager.get("privacyPolicyAction")!=null)
+                  {
+				if(ProjectManager.get("privacyPolicyAction").equalsIgnoreCase("com.trinity.ea.actions.PrivacyPolicyAction")==false)
+				{
+                			Class.forName(ProjectManager.get("privacyPolicyAction")).newInstance();
+				}
+				else
+				{
+                			Class.forName("com.trinity.ea.design.optin.actions.PrivacyPolicyAction").newInstance();
+				}
+			}
+            }
+            catch(InstantiationException e)
+            {
+                e.printStackTrace();
+            }   
+            catch(IllegalAccessException e)
+            {
+                e.printStackTrace();
+            }                      
+            catch(ClassNotFoundException e)
+            {
+                e.printStackTrace();
+            }                        
+        }
+	}
+}
+
+private void getCancelAction()
+{
+                // TODO: Command Line implementation
+                // TODO: MIDP implementation
+                // Trial Expired
+                //System.out.println("Attempting to read property expired action. ");
+                if(ProjectManager.get("optinCancelAction")!=null)
+                {
+                    try
+                    {
+                       
+                        JDialog theDialog=(JDialog)this.getTopLevelAncestor();
+                        theDialog.setVisible(false); 
+                        theDialog.dispose();
+                        //Class.forName(ProjectManager.get("optinCancelAction")).newInstance();
+				try
+				{
+					UIManager.setLookAndFeel("javax.swing.plaf.metal.MetalLookAndFeel");
+				}
+				catch(Exception e)
+				{
+
+				}
+                    }
+                    catch(Exception e)
+                    {
+                        System.out.println(e);
+                    }       
+                }
+                else
+                {
+                    new ConfigurationErrorAction();
+                }
+
+}
+
+    private void btnCancelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelActionPerformed
+	getCancelAction();
+    }//GEN-LAST:event_btnCancelActionPerformed
+
+   private void btnImageContinueMouseClicked(java.awt.event.MouseEvent evt)
+   {
+	doRequest();
+   }
+   
+   private void btnContinueActionPerformed(java.awt.event.ActionEvent evt) 
+   {
+	doRequest(); 
+   }
+
+   private void doRequest()
+   {
+       if(validateData()==true)
+        {
+            // EMail Validation Code
+            String emailAddress = null;
+            String nameID = null;
+            try
+            {
+                nameID=getUserName();
+            }
+            catch(NullPointerException e)
+            {
+            }
+            try
+            {
+                emailAddress = getEMailAddress();
+            }
+            catch(NullPointerException e)
+            {
+            }
+            String optinFormRequestMethod = null;
+            if(ProjectManager.get("optinFormRequestMethod") != null)
+            {
+                optinFormRequestMethod = ProjectManager.get("optinFormRequestMethod");
+            }
+            /* Handle HTTP Requests now */
+            if(optinFormRequestMethod.equalsIgnoreCase("GET")==true)
+            {
+                //System.out.println("The get request: " + getHTTPRequest());
+                try
+                {
+                    URL theURL1 = new URL(getHTTPRequest());
+                    WebConnectionRequest wcr = new WebConnectionRequest();
+                    Map responseDataMap = wcr.doWebGetRequest(theURL1);
+                    //System.out.println("Response Data Map: " + responseDataMap);
+                    String inputNameFullName = "";
+                    String inputNameEMail = "";
+                    if(ProjectManager.get("optinInputFullName")!=null)
+                    {        
+                        inputNameFullName=ProjectManager.get("optinInputFullName");
+                    }
+                    if(ProjectManager.get("optinInputEMailAddress")!=null)
+                    {       
+                        inputNameEMail=ProjectManager.get("optinInputEMailAddress");
+                    }
+                    //ProjectManager.optin(inputNameFullName, inputNameEMail);                 
+                    Map refreshResponseDataMap;
+                    //System.out.println("MAP DATA: " + responseDataMap);
+                       //System.out.println("supportMetaRefreshEnabled=" + ProjectManager.get("supportMetaRefreshEnabled"));
+
+                    if(ProjectManager.get("supportMetaRefreshEnabled") != null)
+                    {
+                        //System.out.println("supportMetaRefreshEnabled=" + ProjectManager.get("supportMetaRefreshEnabled"));
+                        /* if the GET Request return HTML returns a Meta Refresh tag follow through with Refresh timeout, and connection. */
+                        if(Boolean.valueOf(ProjectManager.get("supportMetaRefreshEnabled")).booleanValue()==true)
+                        {
+                            if(responseDataMap.get("refreshenabled")!=null)
+                            {
+                                if(((String)responseDataMap.get("refreshenabled")).equalsIgnoreCase("true")==true)
+                                {
+                                    /* Wait the elapsed time before refresh follow through */
+                                    if(responseDataMap.get("refreshwait")!=null)
+                                    {
+
+                                    }
+                                     /* load the following URL*/
+                                    if(responseDataMap.get("refreshurl")!=null)
+                                    {          
+                                        refreshResponseDataMap = wcr.doWebGetRequest(new URL(((String)responseDataMap.get("refreshurl"))));
+                                        //System.out.println("Refresh Response Map: \r\n" + refreshResponseDataMap);
+                                        HTTPGETRequestParser grp = new HTTPGETRequestParser((String)responseDataMap.get("refreshurl"));
+                                        Map valueMap = grp.getRequestMap();
+                                        //System.out.println("Parsed Response Value Map: \r\n" + valueMap);  
+                                        if(valueMap.get(ProjectManager.get("respInputStatus"))!=null)
+                                        {   //1 = Success
+                                            if(((String)valueMap.get(ProjectManager.get("respInputStatus"))).equalsIgnoreCase("1")==true)
+                                            {
+                                               JDialog theDialog=(JDialog)this.getTopLevelAncestor();
+                                                theDialog.dispose();
+				try
+				{
+					UIManager.setLookAndFeel("javax.swing.plaf.metal.MetalLookAndFeel");
+				}
+				catch(Exception e)
+				{
+
+				}
+                                                //new dlgCustomerBillingResponsePanelSuccess(valueMap,new javax.swing.JFrame(), true).show(); 
+
+                                                //TODO: Create a method in object and pass in Map data then fill in labels.
+                                            }//0 = Failure
+                                            else if(((String)valueMap.get(ProjectManager.get("respInputStatus"))).equalsIgnoreCase("0")==true)
+                                            {
+                                                //Count the Failure Attempts for Lockdown on max attempts exceeded.
+                                                //ProjectManager.attemptPayment();
+                                                JDialog theDialog=(JDialog)this.getTopLevelAncestor();
+                                                theDialog.dispose();
+				try
+				{
+					UIManager.setLookAndFeel("javax.swing.plaf.metal.MetalLookAndFeel");
+				}
+				catch(Exception e)
+				{
+
+				}
+                                                //new dlgCustomerBillingResponsePanelFailure(valueMap,new javax.swing.JFrame(), true).show();
+
+
+                                               //TODO: Create a method in object and pass in Map data then fill in labels.
+                                            }                                       
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    } 
+                    /* add second call to http connection based on return data.. */ 
+
+                }
+                catch(NullPointerException eeeee)
+                {
+                    System.out.println(eeeee);
+                    //eeeee.printStackTrace();
+                    //skip this, becuase it is currently thrown by the ResponseMap Objects when not connected to the internet, or server. Fix the logic and error handling later on. 
+                }
+                catch(MalformedURLException e){
+                    System.out.println(e);
+                    //e.printStackTrace();
+                }
+            }
+            else if(optinFormRequestMethod.equalsIgnoreCase("POST")==true)
+            {
+                //System.out.println(getPOSTRequest());
+                //System.out.println("The get request: " + getHTTPRequest());
+                try
+                {
+                    String strTheURLString = null;
+                    if(ProjectManager.get("optinFormActionURL")!=null)
+                    {
+                        strTheURLString=ProjectManager.get("optinFormActionURL");
+                    }               
+                    URL theURL1 = new URL(strTheURLString);
+                    WebConnectionRequest wcr = new WebConnectionRequest();
+                    Map responseDataMap = wcr.doWebPostRequest(theURL1,getHTTPRequest());
+                     
+                    String inputNameFullName = "";
+                    String inputNameEMail = "";
+                    if(ProjectManager.get("optinInputFullName")!=null)
+                    {        
+                        inputNameFullName=ProjectManager.get("optinInputFullName");
+                    }
+                    if(ProjectManager.get("optinInputEMailAddress")!=null)
+                    {       
+                        inputNameEMail=ProjectManager.get("optinInputEMailAddress");
+                    }
+                    //ProjectManager.optin(inputNameFullName, inputNameEMail); 
+                    Map refreshResponseDataMap;
+                    //System.out.println("MAP DATA: " + responseDataMap);
+                       //System.out.println("supportMetaRefreshEnabled=" + ProjectManager.get("supportMetaRefreshEnabled"));
+
+                    if(ProjectManager.get("supportMetaRefreshEnabled") != null)
+                    {
+                        //System.out.println("supportMetaRefreshEnabled=" + ProjectManager.get("supportMetaRefreshEnabled"));
+                        /* if the GET Request return HTML returns a Meta Refresh tag follow through with Refresh timeout, and connection. */
+                        if(Boolean.valueOf(ProjectManager.get("supportMetaRefreshEnabled")).booleanValue()==true)
+                        {
+                            if(responseDataMap.get("refreshenabled")!=null)
+                            {
+                                if(((String)responseDataMap.get("refreshenabled")).equalsIgnoreCase("true")==true)
+                                {
+                                    /* Wait the elapsed time before refresh follow through */
+                                    if(responseDataMap.get("refreshwait")!=null)
+                                    {
+
+                                    }
+                                     /* load the following URL*/
+                                    if(responseDataMap.get("refreshurl")!=null)
+                                    {          
+                                        refreshResponseDataMap = wcr.doWebGetRequest(new URL(((String)responseDataMap.get("refreshurl"))));
+                                        //System.out.println("Refresh Response Map: \r\n" + refreshResponseDataMap);
+                                        HTTPGETRequestParser grp = new HTTPGETRequestParser((String)responseDataMap.get("refreshurl"));
+                                        Map valueMap = grp.getRequestMap();
+                                        //System.out.println("Parsed Response Value Map: \r\n" + valueMap);  
+                                        if(valueMap.get(ProjectManager.get("respInputStatus"))!=null)
+                                        {   //1 = Success
+                                            if(((String)valueMap.get(ProjectManager.get("respInputStatus"))).equalsIgnoreCase("1")==true)
+                                            {
+                                               JDialog theDialog=(JDialog)this.getTopLevelAncestor();
+                                                theDialog.dispose();
+				try
+				{
+					UIManager.setLookAndFeel("javax.swing.plaf.metal.MetalLookAndFeel");
+				}
+				catch(Exception e)
+				{
+
+				}
+                                                //new dlgCustomerBillingResponsePanelSuccess(valueMap,new javax.swing.JFrame(), true).show(); 
+
+                                                //TODO: Create a method in object and pass in Map data then fill in labels.
+                                            }//0 = Failure
+                                            else if(((String)valueMap.get(ProjectManager.get("respInputStatus"))).equalsIgnoreCase("0")==true)
+                                            {
+                                                //Count the Failure Attempts for Lockdown on max attempts exceeded.
+                                                //ProjectManager.attemptPayment();
+                                                JDialog theDialog=(JDialog)this.getTopLevelAncestor();
+                                                theDialog.dispose();
+				try
+				{
+					UIManager.setLookAndFeel("javax.swing.plaf.metal.MetalLookAndFeel");
+				}
+				catch(Exception e)
+				{
+
+				}
+                                                //new dlgCustomerBillingResponsePanelFailure(valueMap,new javax.swing.JFrame(), true).show();
+
+
+                                               //TODO: Create a method in object and pass in Map data then fill in labels.
+                                            }                                       
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    } 
+                    /* add second call to http connection based on return data.. */ 
+
+                }
+                catch(NullPointerException eeeee)
+                {
+                    System.out.println(eeeee);
+                    //eeeee.printStackTrace();
+                    //skip this, becuase it is currently thrown by the ResponseMap Objects when not connected to the internet, or server. Fix the logic and error handling later on. 
+                }
+                catch(MalformedURLException e){
+                    System.out.println(e);
+                    //e.printStackTrace();
+                }
+    /****************************************************************************************/
+
+
+                   // TODO: Command Line implementation
+                    // TODO: MIDP implementation
+                    // Trial Expired
+                    //System.out.println("Attempting to read property expired action. ");
+                    if(ProjectManager.get("optinContinueAction")!=null)
+                    {
+                        try
+                        {
+
+
+                            JDialog theDialog=(JDialog)this.getTopLevelAncestor();
+                            theDialog.setVisible(false); 
+                            theDialog.dispose();
+                            //Class.forName(ProjectManager.get("optinContinueAction")).newInstance();
+				try
+				{
+					UIManager.setLookAndFeel("javax.swing.plaf.metal.MetalLookAndFeel");
+				}
+				catch(Exception e)
+				{
+
+				}
+                        }
+                        catch(Exception e)
+                        {
+                            System.out.println(e);
+                        }   
+                    }
+                    else
+                    {
+                        //Problem in Properties File
+                    }
+        }
+        }
+   } 
+
+   /** Set the EMail Address TextField EMail Address text */
+    public void setEMailAddress(String strEMailAddress)
+    {
+        tfEMail.setText(strEMailAddress);
+    }
+    /** Return the EMail Address TextField EMail Address text */    
+    public String getEMailAddress()
+    {
+         return tfEMail.getText();
+    }
+    /** Set the EMail Address TextField EMail Address text */    
+    public void setUserName(String strName)
+    {
+        tfName.setText(strName);
+    }
+    public String getUserName()
+    {
+         return tfName.getText();
+    }    
+    
+    /** returns the HTTP Request */
+    public String getHTTPRequest()
+    {
+        String theRequestType = null;
+        String formActionURL = null;
+        String inputNameFullName = null;
+        String inputNameEMail = null;
+        String inputNames = null;
+        String inputValues = null;        
+        String theHTTPRequest = null;
+        
+        if(ProjectManager.get("optinFormActionURL")!=null)
+        {
+            formActionURL=ProjectManager.get("optinFormActionURL");
+        }
+        if(ProjectManager.get("optinInputFullName")!=null)
+        {        
+            inputNameFullName=ProjectManager.get("optinInputFullName");
+        }
+        if(ProjectManager.get("optinInputEMailAddress")!=null)
+        {       
+            inputNameEMail=ProjectManager.get("optinInputEMailAddress");
+        }
+        //ProjectManager.optin(inputNameFullName, inputNameEMail);  
+        if(ProjectManager.get("optinFormRequestMethod")!=null)
+        {        
+            theRequestType=ProjectManager.get("optinFormRequestMethod");
+            
+        }
+        if(ProjectManager.get("optinInputHiddenNames")!=null)
+        {       
+            inputNames=ProjectManager.get("optinInputHiddenNames");
+            if(ProjectManager.get("optinInputHiddenValues")!=null)
+            {        
+                inputValues=ProjectManager.get("optinInputHiddenValues");
+            } 
+         }        
+        try
+        {
+            Object[] objArrayNames = getStringArray(inputNames);
+            Object[] objArrayValues = getStringArray(inputValues);
+		try
+		{
+			Object[] tmpArrayValues = new Object[objArrayValues.length];
+			for(int i = 0;i<tmpArrayValues.length;i++)
+			{
+				 tmpArrayValues[i] = getCommaSeparatedStringValues((String)objArrayValues[i]);
+			}
+			objArrayValues = tmpArrayValues;
+		}
+		catch(Exception e)
+		{
+			e.printStackTrace();
+		}
+
+            StringBuffer sb = new StringBuffer();
+            sb.append(inputNameFullName + "=" + URLEncoder.encode(getUserName()) + "&" + inputNameEMail + "=" + URLEncoder.encode(getEMailAddress()));
+            if(objArrayNames.length>=1)
+            {
+                for(int i=0;i<objArrayNames.length;i++)
+                {
+                    sb.append("&" + (String)objArrayNames[i] + "=" + URLEncoder.encode((String)objArrayValues[i]));
+                }
+            }
+            theHTTPRequest = sb.toString();            
+        }
+        catch(Exception e)
+        {
+            return null;
+        }
+        if(theRequestType.equalsIgnoreCase("POST")==true)
+        {
+            return theHTTPRequest;
+        }
+        else if(theRequestType.equalsIgnoreCase("GET")==true)
+        {
+            return formActionURL + "?" + theHTTPRequest;
+        }
+        return theHTTPRequest;
+    }
+
+    private Object[] getStringArray(String theString)
+    {
+        ArrayList al = new ArrayList();
+        String parseString = theString;
+        if(parseString.indexOf(",") !=-1)
+        {
+            while(parseString.indexOf(",") !=-1)
+            {
+                al.add(parseString.substring(0,parseString.indexOf(",")));
+                parseString = parseString.substring(parseString.indexOf(",") + 1);
+            }
+            al.add(parseString);
+            al.trimToSize();
+            //Parse key/pair values
+            return al.toArray();
+        }  
+        al.add(parseString);
+        al.trimToSize();
+        //Parse key/pair values
+        return al.toArray();        
+    }
+
+    private String getCommaSeparatedStringValues(String strToUpdate)
+    {
+	 return strToUpdate.replaceAll(":::",",");
+    }
+    
+    public boolean validateData()
+    {
+         // EMail Validation Code
+        String emailAddress = null;
+        String nameID = null;
+        try
+        {
+            nameID=getUserName();
+            if(nameID.equals("")==true)
+            {
+			if(ProjectManager.get("optinEnterNameMessage")!=null)
+			{
+                		getMessage(replaceUIExpressions(ProjectManager.get("msgMsgTitle")),replaceUIExpressions(ProjectManager.get("optinEnterNameMessage")));
+			}
+			else
+			{
+                		getMessage(ProjectManager.get("msgMsgTitle"),"Please Enter Your Name.");
+			}
+                tfName.grabFocus();
+                return false;                
+            }
+        }
+        catch(NullPointerException e)
+        {
+			if(ProjectManager.get("optinEnterNameMessage")!=null)
+			{
+                		getMessage(replaceUIExpressions(ProjectManager.get("msgMsgTitle")),replaceUIExpressions(ProjectManager.get("optinEnterNameMessage")));
+			}
+			else
+			{
+                		getMessage(replaceUIExpressions(ProjectManager.get("msgMsgTitle")),"Please Enter Your Name.");
+			}
+            tfName.grabFocus();
+            return false;            
+        }
+        try
+        {
+            emailAddress = getEMailAddress();
+            if(emailAddress.indexOf("@") == -1)
+            {
+                //System.out.println("@ missing, EMail address is: " + emailAddress);
+			if(ProjectManager.get("optinEnterValidEMailMessage")!=null)
+			{
+                		getMessage(replaceUIExpressions(ProjectManager.get("msgMsgTitle")),replaceUIExpressions(ProjectManager.get("optinEnterValidEMailMessage")));
+			}
+			else
+			{
+                		getMessage(replaceUIExpressions(ProjectManager.get("msgMsgTitle")),"Please Enter a Valid Email Address.");
+			}
+                tfEMail.grabFocus();
+                return false;               
+            }
+            else if(emailAddress.indexOf(".") == -1)
+            {
+                 //System.out.println(". missing");               
+			if(ProjectManager.get("optinEnterValidEMailMessage")!=null)
+			{
+                		getMessage(replaceUIExpressions(ProjectManager.get("msgMsgTitle")),replaceUIExpressions(ProjectManager.get("optinEnterValidEMailMessage")));
+			}
+			else
+			{
+                		getMessage(replaceUIExpressions(ProjectManager.get("msgMsgTitle")),"Please Enter a Valid Email Address.");
+			}
+                tfEMail.grabFocus();
+                return false;               
+            }
+        }
+        catch(NullPointerException e)
+        {
+            getMessage(replaceUIExpressions(ProjectManager.get("msgMsgTitle")),"Please Enter Your Email Address.");
+			if(ProjectManager.get("optinEnterEMailMessage")!=null)
+			{
+                		getMessage(replaceUIExpressions(ProjectManager.get("msgMsgTitle")),replaceUIExpressions(ProjectManager.get("optinEnterEMailMessage")));
+			}
+			else
+			{
+                		getMessage(replaceUIExpressions(ProjectManager.get("msgMsgTitle")),"Please Enter Your Email Address.");
+			}
+            tfEMail.grabFocus();
+            return false;           
+        }
+        String optinFormRequestMethod = null;
+        if(ProjectManager.get("optinFormRequestMethod") != null)
+        {
+            optinFormRequestMethod = ProjectManager.get("optinFormRequestMethod");
+        }
+        else
+        {
+               //Problem in Properties File
+               new ConfigurationErrorAction();
+               return false;
+        }
+        return true;
+    }
+     private static Object[] getStringArraysFromString(String textArrayString)
+    {
+        ArrayList aryList = new ArrayList();
+        String tempString = "";
+        
+        while(textArrayString.indexOf(",")!=-1)
+        {
+            tempString = textArrayString.substring(0,textArrayString.indexOf(","));
+            textArrayString = textArrayString.substring(textArrayString.indexOf(",") + 1);
+            aryList.add(tempString);
+        }
+        aryList.add(textArrayString);
+        return aryList.toArray();
+    } 
+  
+    public void setComponentBorders()
+    {
+
+	try
+	{
+	  if(ProjectManager.get("registrationCustomBorderEnabled")!=null)
+	  {
+		if(ProjectManager.get("registrationCustomBorderEnabled").equalsIgnoreCase("true")==true)
+		{
+
+	  if(ProjectManager.get("registrationTFExtBorderColor")!=null)
+	  {
+		if(ProjectManager.get("registrationTFExtBorderColor").equalsIgnoreCase("")==false)
+		{
+			Object[] tmpArray = getStringArraysFromString(ProjectManager.get("registrationTFExtBorderColor"));
+			extBorderColor = new java.awt.Color(new Integer((String)tmpArray[0]).intValue(),new Integer((String)tmpArray[1]).intValue(),new Integer((String)tmpArray[2]).intValue());
+		}
+	  }
+	  if(ProjectManager.get("registrationTFHighlightBorderColor1")!=null)
+	  {
+		if(ProjectManager.get("registrationTFHighlightBorderColor1").equalsIgnoreCase("")==false)
+		{
+			Object[] tmpArray = getStringArraysFromString(ProjectManager.get("registrationTFHighlightBorderColor1"));
+			highlightBorderColor1 = new java.awt.Color(new Integer((String)tmpArray[0]).intValue(),new Integer((String)tmpArray[1]).intValue(),new Integer((String)tmpArray[2]).intValue());
+		}
+	  }
+	  if(ProjectManager.get("registrationTFHighlightBorderColor2")!=null)
+	  {
+		if(ProjectManager.get("registrationTFHighlightBorderColor2").equalsIgnoreCase("")==false)
+		{
+			Object[] tmpArray = getStringArraysFromString(ProjectManager.get("registrationTFHighlightBorderColor2"));
+			highlightBorderColor2 = new java.awt.Color(new Integer((String)tmpArray[0]).intValue(),new Integer((String)tmpArray[1]).intValue(),new Integer((String)tmpArray[2]).intValue());
+		}
+	  }
+	  if(ProjectManager.get("registrationTFShadowBorderColor1")!=null)
+	  {
+		if(ProjectManager.get("registrationTFShadowBorderColor1").equalsIgnoreCase("")==false)
+		{
+			Object[] tmpArray = getStringArraysFromString(ProjectManager.get("registrationTFShadowBorderColor1"));
+			shadowBorderColor1 = new java.awt.Color(new Integer((String)tmpArray[0]).intValue(),new Integer((String)tmpArray[1]).intValue(),new Integer((String)tmpArray[2]).intValue());
+		}
+	  }
+	  if(ProjectManager.get("registrationTFShadowBorderColor2")!=null)
+	  {
+		if(ProjectManager.get("registrationTFShadowBorderColor2").equalsIgnoreCase("")==false)
+		{
+			Object[] tmpArray = getStringArraysFromString(ProjectManager.get("registrationTFShadowBorderColor2"));
+			shadowBorderColor2 = new java.awt.Color(new Integer((String)tmpArray[0]).intValue(),new Integer((String)tmpArray[1]).intValue(),new Integer((String)tmpArray[2]).intValue());
+		}
+	  }
+    	  		final Border border = new javax.swing.border.CompoundBorder(new javax.swing.border.CompoundBorder(new javax.swing.border.MatteBorder(new java.awt.Insets(1, 0, 1, 1), extBorderColor), new javax.swing.border.CompoundBorder(new javax.swing.border.MatteBorder(new java.awt.Insets(0, 0, 1, 1), shadowBorderColor2), new javax.swing.border.MatteBorder(new java.awt.Insets(1, 1, 0, 0), highlightBorderColor2))), new javax.swing.border.CompoundBorder(new javax.swing.border.MatteBorder(new java.awt.Insets(0, 0, 1, 1), shadowBorderColor1), new javax.swing.border.MatteBorder(new java.awt.Insets(1, 1, 0, 0), highlightBorderColor1)));     
+			tfEMail.setBorder(border);
+			tfName.setBorder(border);
+		}
+	  }
+	}
+	catch(Exception e)
+	{
+		e.printStackTrace();
+	}
+    }
+
+    protected void setBackgroundColor(Color BGColor)
+    {
+	setBackground(BGColor);
+	lEMail.setBackground(BGColor);
+	lName.setBackground(BGColor);
+	taDescription.setBackground(BGColor);
+	if(isImageButton==true)
+	{
+		btnImageContinue.setBackground(BGColor);
+		btnImageCancel.setBackground(BGColor);
+		lImagePrivacyPolicy.setBackground(BGColor);
+	}
+	else
+	{
+		lPrivacyPolicy.setBackground(BGColor);
+	}
+    }
+
+    private void setButtonTextColor(Color FGColor)
+    {
+	try
+	{
+		lEMail.setForeground(FGColor);
+		lName.setForeground(FGColor);
+		taDescription.setForeground(FGColor);
+		if(isImageButton==true)
+		{
+	
+			btnImageContinue.setForeground(FGColor);
+			btnImageCancel.setForeground(FGColor);
+			lImagePrivacyPolicy.setForeground(FGColor);
+		}
+		else
+		{
+			btnContinue.setForeground(FGColor);
+			btnCancel.setForeground(FGColor);
+		}
+	}
+	catch(Exception e)
+	{
+		e.printStackTrace();
+	} 
+   }
+
+    public void setKeyManager()
+    { 
+     KeyboardFocusManager.getCurrentKeyboardFocusManager().addKeyEventDispatcher(
+        new KeyEventDispatcher() {
+            public boolean dispatchKeyEvent(KeyEvent e) 
+            {
+               
+              if (e.getID() == KeyEvent.KEY_PRESSED) 
+              {
+                   if (e.isAltDown() == true || e.isMetaDown() == true || e.isControlDown()==true) 
+                   {   
+				armed = true;
+			 }
+              }            
+                // This example converts all typed keys to upper case
+              if (e.getID() == KeyEvent.KEY_RELEASED) 
+              {
+			if(armed==true)
+			{
+				armed = false;
+                        if(e.getComponent().equals(btnImageCancel)==true)
+                        {
+				    if(e.getKeyCode()==btnImageCancel.getDisplayedMnemonic())
+                            {
+					getCancelAction();
+				    }
+                        }
+                        if(e.getComponent().equals(btnImageContinue)==true)
+                        {
+				    if(e.getKeyCode()==btnImageContinue.getDisplayedMnemonic())
+                            {
+					   doRequest();
+				    }
+                        }
+                        if(e.getComponent().equals(lImagePrivacyPolicy)==true)
+                        {
+				    if(e.getKeyCode()==lImagePrivacyPolicy.getDisplayedMnemonic())
+                            {
+					   	getPrivacyPolicyAction();
+				    }
+                        }
+			}
+              }
+              // If the key should not be dispatched to the
+              // focused component, set discardEvent to true
+              boolean discardEvent = false;
+              return discardEvent;
+            }
+        });       
+    }
+
+    public void setPPKeyManager()
+    { 
+     KeyboardFocusManager.getCurrentKeyboardFocusManager().addKeyEventDispatcher(
+        new KeyEventDispatcher() {
+            public boolean dispatchKeyEvent(KeyEvent e) 
+            {
+               
+              if (e.getID() == KeyEvent.KEY_PRESSED) 
+              {
+                   if (e.isAltDown() == true || e.isMetaDown() == true || e.isControlDown()==true) 
+                   {   
+				armed = true;
+			 }
+              }            
+                // This example converts all typed keys to upper case
+              if (e.getID() == KeyEvent.KEY_RELEASED) 
+              {
+			if(armed==true)
+			{
+				armed = false;
+                        if(e.getComponent().equals(lPrivacyPolicy)==true)
+                        {
+				    if(e.getKeyCode()==lPrivacyPolicy.getDisplayedMnemonic())
+                            {
+					   	getPrivacyPolicyAction();
+				    }
+                        }
+			}
+              }
+              // If the key should not be dispatched to the
+              // focused component, set discardEvent to true
+              boolean discardEvent = false;
+              return discardEvent;
+            }
+        });       
+    }
+
+    private boolean armed = false;
+
+    private void getMessage(String title, String error)
+    {
+        boolean isOptionPane = true;
+	  if(ProjectManager.get("btnBarImgButtonsEnabled")!=null)
+	  {
+	  	if(ProjectManager.get("btnBarImgButtonsEnabled").equalsIgnoreCase("true")==true)
+	  	{
+                    isOptionPane = false;
+                }
+                else
+                {
+                    isOptionPane = true;
+                }
+          }
+          else
+          {
+              isOptionPane = true;
+          }
+        if(isOptionPane==false)
+        {
+            new ErrorDialog(title,error);
+        }
+        else
+        {
+            JOptionPane.showMessageDialog(null,error,title,JOptionPane.INFORMATION_MESSAGE);
+        }
+    }     
+
+    private String replaceUIExpressions(String UIStringToReplaceExpressions)
+    {
+        try
+        {
+            for(int i = 0;i<updateUIExpressions.length;i++)
+            {
+			if(((String)updateUIExpressions[i]).equalsIgnoreCase("product_version")==false)
+			{
+                    UIStringToReplaceExpressions = UIStringToReplaceExpressions.replaceAll("(?i)" + (String)updateUIExpressions[i],ProjectManager.get((String)updateUIExpressions[i]));
+			}
+			else
+			{
+			  //put replace version string code here.
+			  Object[] theVersionArray = getStringArraysFromString(ProjectManager.get((String)updateUIExpressions[i]));
+			  int tempInt = 1;
+			  String strVersionString = "";
+  			  for(int a = 0;a<theVersionArray.length;a++)
+			  {
+				if(0<a)
+				{
+					try
+					{
+						if(Integer.parseInt((String)theVersionArray[a])!=0)
+						{
+							tempInt = a;
+						}
+					}
+					catch(Exception e)
+					{
+						//The String likely was not a number and threw an exception
+					}
+				}
+			  }
+			  tempInt = tempInt + 1;
+  			  for(int a = 0;a<tempInt;a++)
+			  {
+				if(a!=0)
+				{
+					strVersionString = strVersionString + "." + (String)theVersionArray[a];
+				}
+				else
+				{
+					strVersionString = (String)theVersionArray[a];
+				}
+			  }
+                    UIStringToReplaceExpressions = UIStringToReplaceExpressions.replaceAll("(?i)" + (String)updateUIExpressions[i],strVersionString);
+			}
+            }
+            return UIStringToReplaceExpressions;
+        }
+        catch(Exception e)
+        {
+            e.printStackTrace();
+        }
+        return null;
+    }
+
+    Object[] updateUIExpressions = new Object[9];
+    private void updateUIExpressionDefines()
+    {
+        try
+        {
+            ArrayList theExpressionDefinesArrayList = new ArrayList();
+            if(ProjectManager.get("product_vendor_name")!=null)
+            {
+                theExpressionDefinesArrayList.add("product_vendor_name");
+            }
+            if(ProjectManager.get("product_name")!=null)
+            {
+                theExpressionDefinesArrayList.add("product_name");
+            }
+            if(ProjectManager.get("product_version")!=null)
+            {
+                theExpressionDefinesArrayList.add("product_version");
+            }
+            if(ProjectManager.get("product_info_url")!=null)
+            {
+                theExpressionDefinesArrayList.add("product_info_url");
+            }
+            if(ProjectManager.get("product_url")!=null)
+            {
+                theExpressionDefinesArrayList.add("product_url");
+            }
+            if(ProjectManager.get("product_privacy_policy_email")!=null)
+            {
+                theExpressionDefinesArrayList.add("product_privacy_policy_email");
+            }
+            if(ProjectManager.get("product_copyright")!=null)
+            {
+                theExpressionDefinesArrayList.add("product_copyright");
+            }     
+            if(ProjectManager.get("product_price")!=null)
+            {
+                theExpressionDefinesArrayList.add("product_price");
+            }
+            if(ProjectManager.get("product_purchase_support_email")!=null)
+            {
+                theExpressionDefinesArrayList.add("product_purchase_support_email");
+            }
+            theExpressionDefinesArrayList.trimToSize();
+            updateUIExpressions = theExpressionDefinesArrayList.toArray();
+        }
+        catch(Exception e)
+        {
+            e.printStackTrace();
+        }
+    }    
+
+    // Variables declaration - do not modify//GEN-BEGIN:variables
+    private ImageButton btnImageCancel;
+    private ImageButton btnImageContinue;
+    private ImageButton lImagePrivacyPolicy;
+    private javax.swing.JButton btnCancel;
+    private javax.swing.JButton btnContinue;
+    private javax.swing.JLabel lEMail;
+    private javax.swing.JLabel lName;
+    private javax.swing.JLabel lPrivacyPolicy;
+    private javax.swing.JTextArea taDescription;
+    private javax.swing.JTextField tfEMail;
+    private javax.swing.JTextField tfName;
+    // End of variables declaration//GEN-END:variables
+    
+}

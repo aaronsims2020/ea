@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE attributes PUBLIC "-//NetBeans//DTD DefaultAttributes 1.0//EN" "http://www.netbeans.org/dtds/attributes-1_0.dtd">
+<attributes version="1.0">
+    <fileobject name="DoubleBorderRoundedCorner.java">
+        <attr name="class_dependency_javax.swing.JPanel" stringvalue="DoubleBorderRoundedCorner"/>
+    </fileobject>
+    <fileobject name="QuadPixelHorizontalLine.java">
+        <attr name="class_dependency_javax.swing.JPanel" stringvalue="QuadPixelHorizontalLine"/>
+    </fileobject>
+    <fileobject name="UpperRightCorner.java">
+        <attr name="class_dependency_javax.swing.JPanel" stringvalue="UpperRightCorner"/>
+    </fileobject>
+    <fileobject name="TopBottomPixelGroupPanel.java">
+        <attr name="class_dependency_javax.swing.JPanel" stringvalue="TopBottomPixelGroupPanel"/>
+    </fileobject>
+</attributes>

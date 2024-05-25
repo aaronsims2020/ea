@@ -1,0 +1,10 @@
+
+1. the simple way.
+Write out the Java source code into a temp file (make sure that these temp classes have a unique package name to make them easy to identify later), compile it by invoking sun.tools.javac.Main (this class lives in tools.jar - it's the main program for "javac"), put the resultant file in your classpath (don't forget to maintain the proper package directory heirarchy), and invoke it.
+
+For this to work, you'll have to make sure that you have a tools.jar available (you can get a copy from the JDK and bundle it with the corresponding JRE that you distribute as part of your program).
+
+2. the more complex, but higher-performance, way.
+This requires you to understand what the compiled code looks like for the source you're trying to generate. You can use a library like "BCEL" (ByteCode Engineering Library: http://jakarta.apache.org/bcel) to generate the compiled class in memory, and just force the classloader to load the in-memory image as a class. (This is how proxy stub generators work).
+
+2 is a lot more complex than 1, but is more efficient (generation-wise), and avoids the problem of having stale temporary files lying around (the compiled class files..)

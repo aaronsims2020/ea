@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE attributes PUBLIC "-//NetBeans//DTD DefaultAttributes 1.0//EN" "http://www.netbeans.org/dtds/attributes-1_0.dtd">
+<attributes version="1.0">
+    <fileobject name="ColorsPanel.java">
+        <attr name="class_dependency_com.trinity.ea.design.common.panel.EAPanel" stringvalue="ColorsPanel"/>
+        <attr name="class_dependency_javax.swing.Icon" stringvalue="ColorsPanel.ColorSwatch"/>
+    </fileobject>
+    <fileobject name="ErrorColorsPanel.java">
+        <attr name="class_dependency_com.trinity.ea.design.common.panel.EAPanel" stringvalue="ErrorColorsPanel"/>
+        <attr name="class_dependency_javax.swing.Icon" stringvalue="ErrorColorsPanel.ColorSwatch"/>
+    </fileobject>
+    <fileobject name="InformationColorsPanel.java">
+        <attr name="class_dependency_com.trinity.ea.design.common.panel.EAPanel" stringvalue="InformationColorsPanel"/>
+        <attr name="class_dependency_javax.swing.Icon" stringvalue="InformationColorsPanel.ColorSwatch"/>
+    </fileobject>
+    <fileobject name="MainColorPanel.java">
+        <attr name="class_dependency_com.trinity.ea.design.common.panel.EAPanel" stringvalue="MainColorPanel"/>
+    </fileobject>
+    <fileobject name="MessagingAutoUpdateColorsPanel.java">
+        <attr name="class_dependency_com.trinity.ea.design.common.panel.EAPanel" stringvalue="MessagingAutoUpdateColorsPanel"/>
+        <attr name="class_dependency_javax.swing.Icon" stringvalue="MessagingAutoUpdateColorsPanel.ColorSwatch"/>
+    </fileobject>
+    <fileobject name="OptinColorsPanel.java">
+        <attr name="class_dependency_com.trinity.ea.design.common.panel.EAPanel" stringvalue="OptinColorsPanel"/>
+        <attr name="class_dependency_javax.swing.Icon" stringvalue="OptinColorsPanel.ColorSwatch"/>
+    </fileobject>
+    <fileobject name="PaymentsColorsPanel.java">
+        <attr name="class_dependency_com.trinity.ea.design.common.panel.EAPanel" stringvalue="PaymentsColorsPanel"/>
+        <attr name="class_dependency_javax.swing.Icon" stringvalue="PaymentsColorsPanel.ColorSwatch"/>
+    </fileobject>
+    <fileobject name="PrivacyColorsPanel.java">
+        <attr name="class_dependency_com.trinity.ea.design.common.panel.EAPanel" stringvalue="PrivacyColorsPanel"/>
+        <attr name="class_dependency_javax.swing.Icon" stringvalue="PrivacyColorsPanel.ColorSwatch"/>
+    </fileobject>
+    <fileobject name="RefundColorsPanel.java">
+        <attr name="class_dependency_com.trinity.ea.design.common.panel.EAPanel" stringvalue="RefundColorsPanel"/>
+        <attr name="class_dependency_javax.swing.Icon" stringvalue="RefundColorsPanel.ColorSwatch"/>
+    </fileobject>
+    <fileobject name="RegistrationColorsPanel.java">
+        <attr name="class_dependency_com.trinity.ea.design.common.panel.EAPanel" stringvalue="RegistrationColorsPanel"/>
+        <attr name="class_dependency_javax.swing.Icon" stringvalue="RegistrationColorsPanel.ColorSwatch"/>
+    </fileobject>
+</attributes>

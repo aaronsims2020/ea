@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE attributes PUBLIC "-//NetBeans//DTD DefaultAttributes 1.0//EN" "http://www.netbeans.org/dtds/attributes-1_0.dtd">
+<attributes version="1.0">
+    <fileobject name="CustomerBillingInformationPanel.java">
+        <attr name="class_dependency_javax.swing.JPanel" stringvalue="CustomerBillingInformationPanel"/>
+    </fileobject>
+    <fileobject name="LeftFillerPanelPaymentFailure.java">
+        <attr name="class_dependency_javax.swing.JPanel" stringvalue="LeftFillerPanelPaymentFailure"/>
+    </fileobject>
+    <fileobject name="PaymentFailedCenterPanel.java">
+        <attr name="class_dependency_javax.swing.JPanel" stringvalue="PaymentFailedCenterPanel"/>
+    </fileobject>
+    <fileobject name="PaymentFailureRightPanel.java">
+        <attr name="class_dependency_javax.swing.JPanel" stringvalue="PaymentFailureRightPanel"/>
+    </fileobject>
+    <fileobject name="PaymentProcessingDialog.java">
+        <attr name="class_dependency_javax.swing.JDialog" stringvalue="PaymentProcessingDialog"/>
+    </fileobject>
+    <fileobject name="PaymentSuccessCenterPanel.java">
+        <attr name="class_dependency_javax.swing.JPanel" stringvalue="PaymentSuccessCenterPanel"/>
+    </fileobject>
+    <fileobject name="PaymentSuccessFooterPanel.java">
+        <attr name="class_dependency_javax.swing.JPanel" stringvalue="PaymentSuccessFooterPanel"/>
+    </fileobject>
+    <fileobject name="RefundPolicy.java">
+        <attr name="class_dependency_javax.swing.JDialog" stringvalue="RefundPolicy"/>
+    </fileobject>
+    <fileobject name="SecondaryPaymentMethodPanel.java">
+        <attr name="class_dependency_javax.swing.JPanel" stringvalue="SecondaryPaymentMethodPanel"/>
+    </fileobject>
+    <fileobject name="SecureOrderInformationPanel.java">
+        <attr name="class_dependency_javax.swing.JPanel" stringvalue="SecureOrderInformationPanel"/>
+    </fileobject>
+    <fileobject name="dlgCustomerBillingResponsePanelFailure.java">
+        <attr name="class_dependency_javax.swing.JDialog" stringvalue="dlgCustomerBillingResponsePanelFailure"/>
+    </fileobject>
+    <fileobject name="dlgCustomerBillingResponsePanelSuccess.java">
+        <attr name="class_dependency_javax.swing.JDialog" stringvalue="dlgCustomerBillingResponsePanelSuccess"/>
+    </fileobject>
+</attributes>

@@ -1,0 +1,4 @@
+Due to an IllegalAccessException using InstallAnywhere, to additional files were created which must be exact copies of the Distribution Client files for Preview (Try) to work in the EvaluateAnywhere Designers. The Distribution Client files are:
+
+IndexHandler.java -> PreviewTestIndexHandler.java
+

@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE attributes PUBLIC "-//NetBeans//DTD DefaultAttributes 1.0//EN" "http://www.netbeans.org/dtds/attributes-1_0.dtd">
+<attributes version="1.0">
+    <fileobject name="AddFileDialog.java">
+        <attr name="class_dependency_javax.swing.JDialog" stringvalue="AddFileDialog"/>
+    </fileobject>
+    <fileobject name="AdvancedUpdateBuilderConfigurationDialog.java">
+        <attr name="class_dependency_javax.swing.JDialog" stringvalue="AdvancedUpdateBuilderConfigurationDialog"/>
+    </fileobject>
+    <fileobject name="BaseURLChangePanel.java">
+        <attr name="class_dependency_com.trinity.ea.design.common.panel.EAMasterControlPanel" stringvalue="BaseURLChangePanel"/>
+    </fileobject>
+    <fileobject name="LanguageChooser.java">
+        <attr name="class_dependency_javax.swing.JDialog" stringvalue="LanguageChooser"/>
+    </fileobject>
+    <fileobject name="LanguagePanel.java">
+        <attr name="class_dependency_javax.swing.JPanel" stringvalue="LanguagePanel"/>
+    </fileobject>
+    <fileobject name="SelectedLocalesPanel.java">
+        <attr name="class_dependency_com.trinity.ea.design.common.panel.EAMasterControlPanel" stringvalue="SelectedLocalesPanel"/>
+    </fileobject>
+    <fileobject name="UpdateBuilder.java">
+        <attr name="class_dependency_javax.swing.JFrame" stringvalue="UpdateBuilder"/>
+        <attr name="class_dependency_javax.swing.table.AbstractTableModel" stringvalue="UpdateBuilder.AUTableModel"/>
+    </fileobject>
+</attributes>

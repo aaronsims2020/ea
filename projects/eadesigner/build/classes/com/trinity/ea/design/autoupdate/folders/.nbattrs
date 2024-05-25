@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE attributes PUBLIC "-//NetBeans//DTD DefaultAttributes 1.0//EN" "http://www.netbeans.org/dtds/attributes-1_0.dtd">
+<attributes version="1.0">
+    <fileobject name="AutoUpdateFoldersPanel.java">
+        <attr name="class_dependency_com.trinity.ea.design.common.panel.EAPanel" stringvalue="AutoUpdateFoldersPanel"/>
+    </fileobject>
+    <fileobject name="AutoUpdatePlatformsPanel.java">
+        <attr name="class_dependency_com.trinity.ea.design.common.panel.EAPanel" stringvalue="AutoUpdatePlatformsPanel"/>
+    </fileobject>
+    <fileobject name="CustomDefinedFolder.java">
+        <attr name="class_dependency_com.trinity.ea.design.common.panel.EAPanel" stringvalue="CustomDefinedFolder"/>
+    </fileobject>
+    <fileobject name="RootFolderPanel.java">
+        <attr name="class_dependency_com.trinity.ea.design.common.panel.EAPanel" stringvalue="RootFolderPanel"/>
+    </fileobject>
+</attributes>

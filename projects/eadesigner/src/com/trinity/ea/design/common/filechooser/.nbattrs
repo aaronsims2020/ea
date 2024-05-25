@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE attributes PUBLIC "-//NetBeans//DTD DefaultAttributes 1.0//EN" "http://www.netbeans.org/dtds/attributes-1_0.dtd">
+<attributes version="1.0">
+    <fileobject name="EAXFileFilter.java">
+        <attr name="class_dependency_javax.swing.filechooser.FileFilter" stringvalue="EAXFileFilter"/>
+    </fileobject>
+    <fileobject name="EAXFileView.java">
+        <attr name="class_dependency_javax.swing.filechooser.FileView" stringvalue="EAXFileView"/>
+    </fileobject>
+    <fileobject name="ImageFileFilter.java">
+        <attr name="class_dependency_javax.swing.filechooser.FileFilter" stringvalue="ImageFileFilter"/>
+    </fileobject>
+</attributes>

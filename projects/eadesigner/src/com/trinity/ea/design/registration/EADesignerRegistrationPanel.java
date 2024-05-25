@@ -1,0 +1,1865 @@
+/*
+ * EADesignerRegistrationPanel.java
+ *
+ * Created on December 13, 2003, 1:17 AM
+ */
+
+package com.trinity.ea.design.registration;
+import com.trinity.ea.design.common.panel.EAPanel;
+import com.trinity.ea.design.common.panel.EAMasterControlPanel;
+import com.trinity.ea.design.common.panel.EAPropertiesPanel;
+import com.trinity.ea.design.common.panel.EAListItem;
+import com.trinity.ea.design.common.panel.EAListItemContent;
+import com.trinity.ea.design.common.panel.DataContentPanelFourthTier;
+import com.trinity.ea.design.common.panel.TextFieldPanelFourthTier;
+import com.trinity.ea.design.common.panel.TextPanePanelFourthTier;
+import com.trinity.ea.design.common.panel.DataContentPanel;
+import com.trinity.ea.design.common.panel.TextFieldPanel;
+import com.trinity.ea.design.common.panel.TextPanePanel;
+import com.trinity.ea.design.common.file.ProjectManager;
+import com.trinity.ea.design.common.borderline.ContentAreaHeaderPanel;
+//import com.trinity.ea.design.common.status.ProgressWindow;
+import com.trinity.ea.design.registration.config.RegistrationConfigurationPanel;
+import com.trinity.ea.design.registration.ui.RegistrationCodeUIPanel;
+import com.trinity.ea.design.registration.ui.RegistrationCodeSuccessUIPanel;
+import com.trinity.ea.design.registration.ui.RegistrationCodeFailedUIPanel;
+import com.trinity.ea.design.common.sidebar.SBTab;
+import com.trinity.ea.design.project.EADesignerProjectPanel;
+import com.trinity.ea.design.common.sidebar.SBSpacer;
+import com.trinity.ea.design.rules.builder.DesignerRuleBuilder;
+import java.util.HashMap;
+import java.util.Collections;
+import java.util.Map;
+import java.util.ArrayList;
+import java.awt.Font;
+import javax.swing.*;
+import java.awt.*;
+
+
+/**
+ *
+ * @author  aaronsc Trinity Software
+ * Copyright ©2003-2005 Trinity Software. All rights reserved.
+ */
+public class EADesignerRegistrationPanel extends EAMasterControlPanel {
+    Map sbMap = Collections.synchronizedMap(new HashMap());
+    private Color backgroundColor = new java.awt.Color(100, 120, 170);
+    private Color borderColor1 = new java.awt.Color(198, 226, 253);
+    private Color borderColor2 = new java.awt.Color(96, 110, 145);
+    private Color rowColor = new java.awt.Color(220, 225, 240);
+    private Color rowBorderColor = new java.awt.Color(255, 255, 255);
+    private Icon theRowIcon = new javax.swing.ImageIcon(getClass().getResource("/images/tree/arrow.png"));
+    private Icon theUIStringRowIcon = new javax.swing.ImageIcon(getClass().getResource("/images/tree/uistring.png"));
+    private Icon theActionRowIcon = new javax.swing.ImageIcon(getClass().getResource("/images/lgpl/action.png"));
+    private int rowHeight = 25;
+ 
+    /** Creates new form EADesignerProjectPanel */
+    public EADesignerRegistrationPanel() {
+   
+     	//ProgressWindow progWindow = new ProgressWindow();
+	//try
+	//{
+	//  progWindow.showStatus("Launching Registration Designer", 1);
+        initComponents();
+	  initSidebar();
+        setSelectedMenuItem(lConfigurationMenuItem);
+	//  progWindow.close();
+	//}
+	//catch(Exception e)
+	//{
+	//	e.printStackTrace();
+	//	progWindow.close();
+	//}    
+    }
+
+   private EAPanel TheContentPanelReference = new EAPanel();
+   private void setContentPanel(EAPanel theContentPanel)
+  {
+    try
+    {
+	 getDataUpdate();
+       TheContentPanelReference.setVisible(false);
+       RegistrationSelectionContentPanel.remove(TheContentPanelReference);        
+       TheContentPanelReference = theContentPanel;
+	 RegistrationSelectionContentPanel.setPreferredSize(new java.awt.Dimension(620, 275));
+       RegistrationSelectionContentPanel.add(TheContentPanelReference);     
+       TheContentPanelReference.setVisible(true);
+
+    }
+    catch(Exception e)
+    {
+        System.out.println(e);
+    }
+  }     
+
+    public void getConfigurationPanelUpdate()
+    {
+	setConfigurationPropertyPanel();
+    }
+
+  public void getDataUpdate()
+  {
+	try
+	{
+		// Registration Support Functionality Checkbox Enabled/Disabled
+		registrationEnabledPanel.getDataUpdate();
+		TheContentPanelReference.getDataUpdate();		
+		/*
+		if(eaPropPanel == 5)
+		{
+		EAListItem[] theItems = theEAProperties.getEAListItems();
+		if(theItems!=null)
+		{
+			if(2<theItems.length)
+			{
+				ArrayList theNamesList = new ArrayList();
+				int theRegCodes = theItems.length - 1;
+				for(int i = 0;i<theRegCodes;i++)
+				{
+					theNamesList.add(theItems[i].getInputText());
+				}
+				theNamesList.trimToSize();
+				ProjectManager.putTempNoFileWrite("registeredCode",getStringFromArray(theNamesList.toArray()));
+			}
+			else
+			{
+				ProjectManager.putTempNoFileWrite("registeredCode",theItems[0].getInputText());
+			}
+		}
+		}
+		*/
+		ProjectManager.saveTempNow();
+	}
+	catch(Exception e)
+	{
+		e.printStackTrace();
+	}
+  }   
+
+    /** This method is called from within the constructor to
+     * initialize the form.
+     * WARNING: Do NOT modify this code. The content of this method is
+     * always regenerated by the Form Editor.
+     */
+    private void initComponents() {//GEN-BEGIN:initComponents
+        RegistrationContentTopPanel = new javax.swing.JPanel();
+        RegistrationCentralContentPanel = new javax.swing.JPanel();
+        RegistrationContentPanel = new javax.swing.JPanel();
+        RegistrationContentPanelItem3 = new javax.swing.JPanel();
+        RegistrationSettingsPanelItem2 = new javax.swing.JPanel();
+        RegistrationEnabledPanel1 = new javax.swing.JPanel();
+        cbRegistrationEnabled = new javax.swing.JCheckBox();
+        RegistrationPanelMainContainer1 = new javax.swing.JPanel();
+        btnRegistrationFormPreview = new javax.swing.JButton();
+        RegistrationSettingsPanelItem8 = new javax.swing.JPanel();
+        RegistrationContentPanelItem4 = new javax.swing.JPanel();
+        RegistrationSettingsPanelItem1 = new javax.swing.JPanel();
+        RegistrationTitlePanel = new javax.swing.JPanel();
+        lEvaluationUnlockCode = new javax.swing.JLabel();
+	  RegistrationMenuPanelBottomPanel = new javax.swing.JPanel();
+        tfEvaluationUnlockCode = new javax.swing.JTextField();
+        RegistrationTitleRightPanel = new javax.swing.JPanel();
+        btnGenerateEvaluationUnlockCode = new javax.swing.JButton();
+        MaxRegistrationAttemptsSettingsPanel = new javax.swing.JPanel();
+        MaxRegistrationAttemptsLeftContentPanel = new javax.swing.JPanel();
+        lMaxRegistrationAttempts = new javax.swing.JLabel();
+        tfMaxRegistrationAttempts = new javax.swing.JTextField();
+        MaxRegistrationAttemptsRightFillerPanel = new javax.swing.JPanel();
+        RegistrationCentralContentLeftMarginPanel = new javax.swing.JPanel();
+        RegistrationCentralContentRightMarginPanel = new javax.swing.JPanel();
+        RegistrationContentBottomPanel = new javax.swing.JPanel();
+        RegistrationMenuPanel = new javax.swing.JPanel();
+        RegistrationMenuButtonPanel = new javax.swing.JPanel();
+ 	  lConfigurationMenuItem = new SBTab("Configuration",sbTabWidth, sbTabHeight, sbTabLeftMargin, theCurrentMenuColor, theTextMenuColor, arrowIcon, iconTextGap, sbTabTopBorderColor, sbTabBottomBorderColor, sbTabRightInnerBorderColor, sbTabRightOuterBorderColor, sbTabIsOpaque);
+        lRegistrationCodeUIMenuItem = new SBTab("Registration Code UI",sbTabWidth, sbTabHeight, sbTabLeftMargin, theCurrentMenuColor, theTextMenuColor, arrowIcon, iconTextGap, sbTabTopBorderColor, sbTabBottomBorderColor, sbTabRightInnerBorderColor, sbTabRightOuterBorderColor, sbTabIsOpaque);
+        lRegistrationCodeSuccessUIMenuItem = new SBTab("Registration Code Success UI",sbTabWidth, sbTabHeight, sbTabLeftMargin, theCurrentMenuColor, theTextMenuColor, arrowIcon, iconTextGap, sbTabTopBorderColor, sbTabBottomBorderColor, sbTabRightInnerBorderColor, sbTabRightOuterBorderColor, sbTabIsOpaque);
+        lRegistrationCodeFailedUIMenuItem = new SBTab("Registration Code Failed UI",sbTabWidth, sbTabHeight, sbTabLeftMargin, theCurrentMenuColor, theTextMenuColor, arrowIcon, iconTextGap, sbTabTopBorderColor, sbTabBottomBorderColor, sbTabRightInnerBorderColor, sbTabRightOuterBorderColor, sbTabIsOpaque);
+        RegistrationMenuButtonPanelTop = new SBTab(null,sbTabWidth, sbTabMenuTopSpaceFiller, sbTabLeftMargin, theCurrentMenuColor, theTextMenuColor, null, iconTextGap, theCurrentMenuColor, sbTabBottomBorderColor, sbTabRightInnerBorderColor, sbTabRightOuterBorderColor, sbTabIsOpaque);
+        RegistrationMenuButtonPanelBottom = new SBSpacer(theCurrentMenuColor,sbTabTopBorderColor,theCurrentMenuColor,sbTabRightInnerBorderColor,sbTabRightOuterBorderColor,sbTabIsOpaque);
+        RegistrationMenuLeftSpaceFiller = new javax.swing.JPanel();
+        RegistrationSelectionContentPanel = new javax.swing.JPanel();
+RegistrationMenuContentPanel = new javax.swing.JPanel();
+
+	  registrationEnabledPanel = new RegistrationEnabledControl();
+
+        setLayout(new javax.swing.BoxLayout(this, javax.swing.BoxLayout.Y_AXIS));
+
+//
+theEAProperties = new EAPropertiesPanel(getConfigurationEAListItems(),rowColor, rowBorderColor, backgroundColor, rowHeight);
+//
+theEAProperties.setMasterControlPanel(this);
+//
+	  registrationEnabledPanel.setBackgroundColor(backgroundColor);
+	  registrationEnabledPanel.setText("Enable Registration Code Support");
+	  theEAProperties.setHeaderTextAndWidth("Registration Code Configuration", 300, "Value", 175, "", 0);
+	  theEAProperties.setAddButtonText("Add Unlock Code");
+	  theEAProperties.setRemoveButtonText("Remove Unlock Code");
+	  theEAProperties.setDefaultLabelText("Software Evaluation Unlock Code ");
+	  theEAProperties.setEditButtonText("Edit Input");
+	  theEAProperties.setAddButtonVisible(true);
+	  theEAProperties.setRemoveButtonVisible(true);
+	  theEAProperties.setEditButtonVisible(false);
+	  theEAProperties.setConfigurationWizardButtonVisible(false);
+	  theEAProperties.setPreviewButtonText("Preview");
+	  theEAProperties.setConfigurationWizardButtonText("Configuration Wizard");
+	  theEAProperties.setDescriptorPanelWidth(226);
+	  theEAProperties.setDefaultRowIcon(theUIStringRowIcon);
+	  theEAProperties.setParentComponent(this);
+	  theEAProperties.setUITextWithStartIndex("Software Evaluation Unlock Code ", 0, 1);
+	  theEAProperties.setAddButtonDataEnabled(true);
+	  theEAProperties.setRemoveButtonDataEnabled(true);
+	  theEAProperties.setLabelWidth(275);
+	  theEAProperties.setDataWidth(375);
+	  try
+	  {
+	  	theEAProperties.setPreviewButtonAction(DesignerRuleBuilder.get("registrationDialogPreviewAction"));
+	  }
+	  catch(Exception ee)
+	  {
+		ee.printStackTrace();
+	  }
+
+        setBackground(new java.awt.Color(100, 120, 170));
+        RegistrationContentTopPanel.setLayout(new java.awt.BorderLayout());
+
+        RegistrationContentTopPanel.setBackground(new java.awt.Color(100, 120, 170));
+        RegistrationContentTopPanel.setMaximumSize(new java.awt.Dimension(2147483647, 150));
+        RegistrationContentTopPanel.setPreferredSize(new java.awt.Dimension(620, 150));
+        RegistrationCentralContentPanel.setLayout(new java.awt.BorderLayout());
+
+        RegistrationMenuContentPanel.setBackground(new java.awt.Color(100, 120, 170));
+        RegistrationMenuContentPanel.setMaximumSize(new java.awt.Dimension(2147483647, 150));
+        RegistrationMenuContentPanel.setPreferredSize(new java.awt.Dimension(sbTabWidth, 3000));
+
+        RegistrationCentralContentPanel.setBackground(new java.awt.Color(100, 120, 170));
+        RegistrationCentralContentPanel.setMaximumSize(new java.awt.Dimension(2147483647, 110));
+        RegistrationCentralContentPanel.setPreferredSize(new java.awt.Dimension(620, 115));
+        RegistrationContentPanel.setLayout(new java.awt.BorderLayout());
+
+        RegistrationContentPanel.setBackground(new java.awt.Color(100, 120, 170));
+        RegistrationContentPanel.setMaximumSize(new java.awt.Dimension(2147483647, 115));
+        RegistrationContentPanel.setMinimumSize(new java.awt.Dimension(448, 0));
+        RegistrationContentPanel.setPreferredSize(new java.awt.Dimension(600, 115));
+        RegistrationContentPanelItem3.setLayout(new javax.swing.BoxLayout(RegistrationContentPanelItem3, javax.swing.BoxLayout.Y_AXIS));
+
+        RegistrationContentPanelItem3.setBackground(new java.awt.Color(100, 120, 170));
+        RegistrationContentPanelItem3.setBorder(new javax.swing.border.TitledBorder(new javax.swing.border.EtchedBorder(new java.awt.Color(140, 171, 240), new java.awt.Color(27, 44, 76)), "Registration Code", javax.swing.border.TitledBorder.LEADING, javax.swing.border.TitledBorder.TOP, new java.awt.Font("Arial", 1, 12)));
+        RegistrationSettingsPanelItem2.setLayout(new java.awt.BorderLayout());
+
+        RegistrationSettingsPanelItem2.setBackground(new java.awt.Color(100, 120, 170));
+        RegistrationEnabledPanel1.setLayout(new java.awt.BorderLayout(15, 5));
+
+        RegistrationEnabledPanel1.setBackground(new java.awt.Color(100, 120, 170));
+        RegistrationEnabledPanel1.setMaximumSize(new java.awt.Dimension(300, 2147483647));
+        cbRegistrationEnabled.setBackground(new java.awt.Color(100, 120, 170));
+        cbRegistrationEnabled.setFont(new java.awt.Font("Arial", 0, 12));
+        cbRegistrationEnabled.setSelected(true);
+        cbRegistrationEnabled.setText("Enable Registration Code Support");
+        RegistrationEnabledPanel1.add(cbRegistrationEnabled, java.awt.BorderLayout.CENTER);
+
+        RegistrationSettingsPanelItem2.add(RegistrationEnabledPanel1, java.awt.BorderLayout.WEST);
+
+        RegistrationPanelMainContainer1.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.LEFT, 15, 0));
+
+        RegistrationPanelMainContainer1.setBackground(new java.awt.Color(100, 120, 170));
+        btnRegistrationFormPreview.setFont(new java.awt.Font("Arial", 0, 12));
+        btnRegistrationFormPreview.setText("Preview");
+        RegistrationPanelMainContainer1.add(btnRegistrationFormPreview);
+
+        RegistrationSettingsPanelItem2.add(RegistrationPanelMainContainer1, java.awt.BorderLayout.CENTER);
+
+        RegistrationContentPanelItem3.add(RegistrationSettingsPanelItem2);
+
+        RegistrationSettingsPanelItem8.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.LEFT));
+
+        RegistrationSettingsPanelItem8.setBackground(new java.awt.Color(100, 120, 170));
+        RegistrationContentPanelItem3.add(RegistrationSettingsPanelItem8);
+
+	  theEAProperties.setDescriptorPanel(registrationEnabledPanel);
+	  RegistrationContentPanel.add(theEAProperties);
+
+        //RegistrationContentPanel.add(RegistrationContentPanelItem3, java.awt.BorderLayout.NORTH);
+
+        RegistrationContentPanelItem4.setLayout(new javax.swing.BoxLayout(RegistrationContentPanelItem4, javax.swing.BoxLayout.Y_AXIS));
+
+        RegistrationContentPanelItem4.setBackground(new java.awt.Color(100, 120, 170));
+        RegistrationContentPanelItem4.setBorder(new javax.swing.border.TitledBorder(new javax.swing.border.EtchedBorder(new java.awt.Color(140, 171, 240), new java.awt.Color(27, 44, 76)), "Configuration", javax.swing.border.TitledBorder.LEADING, javax.swing.border.TitledBorder.TOP, new java.awt.Font("Arial", 1, 12)));
+        RegistrationContentPanelItem4.setMaximumSize(new java.awt.Dimension(1400, 50));
+        RegistrationContentPanelItem4.setMinimumSize(new java.awt.Dimension(60, 50));
+        RegistrationContentPanelItem4.setPreferredSize(new java.awt.Dimension(600, 50));
+        RegistrationSettingsPanelItem1.setLayout(new java.awt.BorderLayout());
+
+        RegistrationSettingsPanelItem1.setBackground(new java.awt.Color(100, 120, 170));
+        RegistrationSettingsPanelItem1.setMaximumSize(new java.awt.Dimension(32767, 33));
+        RegistrationTitlePanel.setBackground(new java.awt.Color(100, 120, 170));
+        RegistrationTitlePanel.setMaximumSize(new java.awt.Dimension(100, 2147483647));
+        lEvaluationUnlockCode.setBackground(new java.awt.Color(100, 120, 170));
+        lEvaluationUnlockCode.setFont(new java.awt.Font("Arial", 0, 12));
+        lEvaluationUnlockCode.setText("Master Software Evaluation Unlock Code:");
+        RegistrationTitlePanel.add(lEvaluationUnlockCode);
+
+        tfEvaluationUnlockCode.setPreferredSize(new java.awt.Dimension(220, 19));
+        RegistrationTitlePanel.add(tfEvaluationUnlockCode);
+
+        RegistrationSettingsPanelItem1.add(RegistrationTitlePanel, java.awt.BorderLayout.WEST);
+
+        RegistrationTitleRightPanel.setLayout(new javax.swing.BoxLayout(RegistrationTitleRightPanel, javax.swing.BoxLayout.Y_AXIS));
+
+        RegistrationTitleRightPanel.setBackground(new java.awt.Color(100, 120, 170));
+        btnGenerateEvaluationUnlockCode.setText("Generate");
+        RegistrationTitleRightPanel.add(btnGenerateEvaluationUnlockCode);
+
+        RegistrationSettingsPanelItem1.add(RegistrationTitleRightPanel, java.awt.BorderLayout.CENTER);
+
+        RegistrationContentPanelItem4.add(RegistrationSettingsPanelItem1);
+
+        MaxRegistrationAttemptsSettingsPanel.setLayout(new java.awt.BorderLayout());
+
+        MaxRegistrationAttemptsSettingsPanel.setBackground(new java.awt.Color(100, 120, 170));
+        MaxRegistrationAttemptsSettingsPanel.setMaximumSize(new java.awt.Dimension(32767, 33));
+        MaxRegistrationAttemptsLeftContentPanel.setBackground(new java.awt.Color(100, 120, 170));
+        MaxRegistrationAttemptsLeftContentPanel.setMaximumSize(new java.awt.Dimension(100, 2147483647));
+        lMaxRegistrationAttempts.setBackground(new java.awt.Color(100, 120, 170));
+        lMaxRegistrationAttempts.setFont(new java.awt.Font("Arial", 0, 12));
+        lMaxRegistrationAttempts.setText("Maximum Registration Attempts to Lockout:");
+        MaxRegistrationAttemptsLeftContentPanel.add(lMaxRegistrationAttempts);
+
+        tfMaxRegistrationAttempts.setPreferredSize(new java.awt.Dimension(220, 19));
+        MaxRegistrationAttemptsLeftContentPanel.add(tfMaxRegistrationAttempts);
+
+        MaxRegistrationAttemptsSettingsPanel.add(MaxRegistrationAttemptsLeftContentPanel, java.awt.BorderLayout.WEST);
+
+        MaxRegistrationAttemptsRightFillerPanel.setLayout(new javax.swing.BoxLayout(MaxRegistrationAttemptsRightFillerPanel, javax.swing.BoxLayout.Y_AXIS));
+
+        MaxRegistrationAttemptsRightFillerPanel.setBackground(new java.awt.Color(100, 120, 170));
+        MaxRegistrationAttemptsSettingsPanel.add(MaxRegistrationAttemptsRightFillerPanel, java.awt.BorderLayout.CENTER);
+
+        RegistrationContentPanelItem4.add(MaxRegistrationAttemptsSettingsPanel);
+
+        //RegistrationContentPanel.add(RegistrationContentPanelItem4, java.awt.BorderLayout.CENTER);
+
+        RegistrationCentralContentPanel.add(RegistrationContentPanel, java.awt.BorderLayout.CENTER);
+
+        RegistrationCentralContentLeftMarginPanel.setBackground(new java.awt.Color(100, 120, 170));
+        RegistrationCentralContentPanel.add(RegistrationCentralContentLeftMarginPanel, java.awt.BorderLayout.WEST);
+
+        RegistrationCentralContentRightMarginPanel.setBackground(new java.awt.Color(100, 120, 170));
+        RegistrationCentralContentPanel.add(RegistrationCentralContentRightMarginPanel, java.awt.BorderLayout.EAST);
+
+        RegistrationContentTopPanel.add(RegistrationCentralContentPanel, java.awt.BorderLayout.CENTER);
+RegistrationContentTopPanel.setPreferredSize(new java.awt.Dimension(620, 2000));
+        add(RegistrationContentTopPanel);
+
+        RegistrationContentBottomPanel.setLayout(new java.awt.BorderLayout());
+
+        RegistrationContentBottomPanel.setBackground(new java.awt.Color(100, 120, 170));
+        RegistrationContentBottomPanel.setMinimumSize(new java.awt.Dimension(180, 275));
+        RegistrationContentBottomPanel.setPreferredSize(new java.awt.Dimension(180, 275));
+        RegistrationContentBottomPanel.setMaximumSize(new java.awt.Dimension(180, 275));
+        RegistrationMenuPanel.setLayout(new java.awt.BorderLayout());
+
+        RegistrationMenuPanel.setBackground(new java.awt.Color(100, 120, 170));
+        RegistrationMenuPanel.setForeground(new java.awt.Color(255, 255, 255));
+        RegistrationMenuPanel.setMaximumSize(new java.awt.Dimension(sbTabWidth, 32767));
+        RegistrationMenuPanel.setMinimumSize(new java.awt.Dimension(sbTabWidth, 10));
+        RegistrationMenuPanel.setPreferredSize(new java.awt.Dimension(sbTabWidth, 10));
+        RegistrationMenuButtonPanel.setLayout(new javax.swing.BoxLayout(RegistrationMenuButtonPanel, javax.swing.BoxLayout.Y_AXIS));
+
+        RegistrationMenuButtonPanel.setBackground(new java.awt.Color(100, 120, 170));
+        RegistrationMenuButtonPanel.setForeground(new java.awt.Color(255, 255, 255));
+        RegistrationMenuButtonPanel.setMaximumSize(new java.awt.Dimension(sbTabWidth, sbTabGroupHeight));
+        RegistrationMenuButtonPanel.setMinimumSize(new java.awt.Dimension(sbTabWidth, sbTabGroupHeight));
+        RegistrationMenuButtonPanel.setPreferredSize(new java.awt.Dimension(sbTabWidth, sbTabGroupHeight));
+
+        RegistrationMenuPanelBottomPanel.setLayout(new java.awt.BorderLayout());
+
+        RegistrationMenuPanelBottomPanel.setBackground(new java.awt.Color(39, 63, 109));
+        RegistrationMenuPanelBottomPanel.setForeground(new java.awt.Color(255, 255, 255));
+        RegistrationMenuPanelBottomPanel.setMaximumSize(new java.awt.Dimension(sbTabWidth, 100));
+        RegistrationMenuPanelBottomPanel.setMinimumSize(new java.awt.Dimension(sbTabWidth, 100));
+        RegistrationMenuPanelBottomPanel.setPreferredSize(new java.awt.Dimension(sbTabWidth, 100));
+
+	  lConfigurationMenuItem.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                lConfigurationMenuItemMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                lConfigurationMenuItemMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                lConfigurationMenuItemMouseExited(evt);
+            }
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                lConfigurationMenuItemMousePressed(evt);
+            }
+            public void mouseReleased(java.awt.event.MouseEvent evt) {
+                lConfigurationMenuItemMouseReleased(evt);
+            }
+        });
+
+        RegistrationMenuButtonPanel.add(lConfigurationMenuItem);
+
+
+        lRegistrationCodeUIMenuItem.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                lRegistrationCodeUIMenuItemMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                lRegistrationCodeUIMenuItemMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                lRegistrationCodeUIMenuItemMouseExited(evt);
+            }
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                lRegistrationCodeUIMenuItemMousePressed(evt);
+            }
+            public void mouseReleased(java.awt.event.MouseEvent evt) {
+                lRegistrationCodeUIMenuItemMouseReleased(evt);
+            }
+        });
+
+        RegistrationMenuButtonPanel.add(lRegistrationCodeUIMenuItem);
+
+        lRegistrationCodeSuccessUIMenuItem.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                lRegistrationCodeSuccessUIMenuItemMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                lRegistrationCodeSuccessUIMenuItemMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                lRegistrationCodeSuccessUIMenuItemMouseExited(evt);
+            }
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                lRegistrationCodeSuccessUIMenuItemMousePressed(evt);
+            }
+            public void mouseReleased(java.awt.event.MouseEvent evt) {
+                lRegistrationCodeSuccessUIMenuItemMouseReleased(evt);
+            }
+        });
+
+        RegistrationMenuButtonPanel.add(lRegistrationCodeSuccessUIMenuItem);
+
+        lRegistrationCodeFailedUIMenuItem.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                lRegistrationCodeFailedUIMenuItemMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                lRegistrationCodeFailedUIMenuItemMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                lRegistrationCodeFailedUIMenuItemMouseExited(evt);
+            }
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                lRegistrationCodeFailedUIMenuItemMousePressed(evt);
+            }
+            public void mouseReleased(java.awt.event.MouseEvent evt) {
+                lRegistrationCodeFailedUIMenuItemMouseReleased(evt);
+            }
+        });
+
+        RegistrationMenuButtonPanel.add(lRegistrationCodeFailedUIMenuItem);
+
+/**********************/
+        RegistrationMenuPanelBottomPanel.add(RegistrationMenuButtonPanel, java.awt.BorderLayout.NORTH);
+        RegistrationMenuPanelBottomPanel.add(RegistrationMenuButtonPanelBottom, java.awt.BorderLayout.CENTER);
+        RegistrationMenuPanel.add(RegistrationMenuPanelBottomPanel, java.awt.BorderLayout.CENTER);
+        RegistrationMenuPanel.add(RegistrationMenuButtonPanelTop, java.awt.BorderLayout.NORTH);
+        RegistrationMenuButtonPanelBottom.setBackground(new java.awt.Color(100, 120, 170));
+        RegistrationMenuButtonPanelBottom.setForeground(new java.awt.Color(255, 255, 255));
+        RegistrationMenuLeftSpaceFiller.setBackground(new java.awt.Color(100, 120, 170));
+        RegistrationMenuLeftSpaceFiller.setMinimumSize(new java.awt.Dimension(1, 10));
+        RegistrationMenuLeftSpaceFiller.setPreferredSize(new java.awt.Dimension(1, 10));
+        RegistrationMenuPanel.add(RegistrationMenuLeftSpaceFiller, java.awt.BorderLayout.WEST);
+        RegistrationContentBottomPanel.add(RegistrationMenuPanel, java.awt.BorderLayout.WEST);
+/**********************/
+        RegistrationSelectionContentPanel.setLayout(new java.awt.BorderLayout());
+
+        RegistrationSelectionContentPanel.setBackground(new java.awt.Color(140, 160, 210));
+        RegistrationSelectionContentPanel.setForeground(new java.awt.Color(255, 255, 255));
+        RegistrationContentBottomPanel.add(RegistrationSelectionContentPanel, java.awt.BorderLayout.CENTER);
+
+        //add(RegistrationContentBottomPanel);
+// add header here
+	  contentPanel = new JPanel();
+        contentPanel.setLayout(new java.awt.BorderLayout());
+        contentPanel.add(RegistrationMenuPanel, java.awt.BorderLayout.WEST);
+        contentPanel.add(RegistrationContentBottomPanel, java.awt.BorderLayout.CENTER);
+	  contentProjectPanel = new ContentAreaHeaderPanel(contentPanel, sbTabWidth, theCurrentMenuColor, sbTabRightInnerBorderColor,sbTabRightOuterBorderColor,theSelectedMenuColor);
+	  add(contentProjectPanel, java.awt.BorderLayout.CENTER);
+    }//GEN-END:initComponents
+
+    private void lConfigurationMenuItemMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lConfigurationMenuItemMouseReleased
+	 setMouseReleasedMenuLabel(lConfigurationMenuItem);
+    }//GEN-LAST:event_lConfigurationMenuItemMouseReleased
+
+    private void lRegistrationCodeFailedUIMenuItemMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lRegistrationCodeFailedUIMenuItemMouseReleased
+	 setMouseReleasedMenuLabel(lRegistrationCodeFailedUIMenuItem);
+    }//GEN-LAST:event_lRegistrationCodeFailedUIMenuItemMouseReleased
+
+    private void lRegistrationCodeSuccessUIMenuItemMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lRegistrationCodeSuccessUIMenuItemMouseReleased
+	 setMouseReleasedMenuLabel(lRegistrationCodeSuccessUIMenuItem);
+    }//GEN-LAST:event_lRegistrationCodeSuccessUIMenuItemMouseReleased
+
+    private void lRegistrationCodeUIMenuItemMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lRegistrationCodeUIMenuItemMouseReleased
+	 setMouseReleasedMenuLabel(lRegistrationCodeUIMenuItem);
+    }//GEN-LAST:event_lRegistrationCodeUIMenuItemMouseReleased
+
+    private void lConfigurationMenuItemMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lConfigurationMenuItemMousePressed
+        setMousePressedMenuLabel(lConfigurationMenuItem);
+    }//GEN-LAST:event_lConfigurationMenuItemMousePressed
+
+    private void lRegistrationCodeFailedUIMenuItemMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lRegistrationCodeFailedUIMenuItemMousePressed
+        setMousePressedMenuLabel(lRegistrationCodeFailedUIMenuItem);
+    }//GEN-LAST:event_lRegistrationCodeFailedUIMenuItemMousePressed
+
+    private void lRegistrationCodeSuccessUIMenuItemMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lRegistrationCodeSuccessUIMenuItemMousePressed
+        setMousePressedMenuLabel(lRegistrationCodeSuccessUIMenuItem);
+    }//GEN-LAST:event_lRegistrationCodeSuccessUIMenuItemMousePressed
+
+    private void lRegistrationCodeUIMenuItemMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lRegistrationCodeUIMenuItemMousePressed
+        setMousePressedMenuLabel(lRegistrationCodeUIMenuItem);
+    }//GEN-LAST:event_lRegistrationCodeUIMenuItemMousePressed
+
+    private void lConfigurationMenuItemMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lConfigurationMenuItemMouseExited
+        setMouseExitedMenuLabel(lConfigurationMenuItem);
+    }//GEN-LAST:event_lConfigurationMenuItemMouseExited
+
+    private void lRegistrationCodeFailedUIMenuItemMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lRegistrationCodeFailedUIMenuItemMouseExited
+        setMouseExitedMenuLabel(lRegistrationCodeFailedUIMenuItem);
+    }//GEN-LAST:event_lRegistrationCodeFailedUIMenuItemMouseExited
+
+    private void lRegistrationCodeSuccessUIMenuItemMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lRegistrationCodeSuccessUIMenuItemMouseExited
+        setMouseExitedMenuLabel(lRegistrationCodeSuccessUIMenuItem);
+    }//GEN-LAST:event_lRegistrationCodeSuccessUIMenuItemMouseExited
+
+    private void lRegistrationCodeUIMenuItemMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lRegistrationCodeUIMenuItemMouseExited
+        setMouseExitedMenuLabel(lRegistrationCodeUIMenuItem);
+    }//GEN-LAST:event_lRegistrationCodeUIMenuItemMouseExited
+
+    private void lConfigurationMenuItemMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lConfigurationMenuItemMouseEntered
+        setMouseEnteredMenuLabel(lConfigurationMenuItem);
+    }//GEN-LAST:event_lConfigurationMenuItemMouseEntered
+
+    private void lRegistrationCodeFailedUIMenuItemMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lRegistrationCodeFailedUIMenuItemMouseEntered
+        setMouseEnteredMenuLabel(lRegistrationCodeFailedUIMenuItem);
+    }//GEN-LAST:event_lRegistrationCodeFailedUIMenuItemMouseEntered
+
+    private void lRegistrationCodeSuccessUIMenuItemMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lRegistrationCodeSuccessUIMenuItemMouseEntered
+        setMouseEnteredMenuLabel(lRegistrationCodeSuccessUIMenuItem);
+    }//GEN-LAST:event_lRegistrationCodeSuccessUIMenuItemMouseEntered
+
+    private void lRegistrationCodeUIMenuItemMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lRegistrationCodeUIMenuItemMouseEntered
+        setMouseEnteredMenuLabel(lRegistrationCodeUIMenuItem);
+    }//GEN-LAST:event_lRegistrationCodeUIMenuItemMouseEntered
+
+    private void lConfigurationMenuItemMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lConfigurationMenuItemMouseClicked
+ 	setSelectedMenuItem(lConfigurationMenuItem);
+	setConfigurationPropertyPanel();
+    }//GEN-LAST:event_lConfigurationMenuItemMouseClicked
+
+    private void lRegistrationCodeFailedUIMenuItemMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lRegistrationCodeFailedUIMenuItemMouseClicked
+ 	setSelectedMenuItem(lRegistrationCodeFailedUIMenuItem);
+	setRegistrationCodeFailedUserInterfacePropertyPanel();
+    }//GEN-LAST:event_lRegistrationCodeFailedUIMenuItemMouseClicked
+
+    private void lRegistrationCodeSuccessUIMenuItemMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lRegistrationCodeSuccessUIMenuItemMouseClicked
+ 	setSelectedMenuItem(lRegistrationCodeSuccessUIMenuItem);
+	setRegistrationCodeSuccessUserInterfacePropertyPanel();
+    }//GEN-LAST:event_lRegistrationCodeSuccessUIMenuItemMouseClicked
+
+    private void lRegistrationCodeUIMenuItemMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lRegistrationCodeUIMenuItemMouseClicked
+ 	setSelectedMenuItem(lRegistrationCodeUIMenuItem);
+	setRegistrationCodeUserInterfacePropertyPanel();
+    }//GEN-LAST:event_lRegistrationCodeUIMenuItemMouseClicked
+
+ private Color theCurrentMenuColor = new Color(100, 120, 170);
+ private Color theSelectedMenuColor = new Color(140,160,210);
+ private Color theTextMenuColor = new Color(255, 255, 255);
+ private boolean pressedSelected = false;
+ private Icon arrowIcon = new javax.swing.ImageIcon(getClass().getResource("/images/arrow.gif"));
+ private Icon arrowSelectedIcon = new javax.swing.ImageIcon(getClass().getResource("/images/arrow_selected.gif"));
+ private Icon arrowMouseOverIcon = new javax.swing.ImageIcon(getClass().getResource("/images/arrow_mouseover.gif"));  
+ private int iconTextGap = 5;
+ private int sbTabMenuTopSpaceFiller = 15;
+ private int sbTabLeftMargin = 5;
+ private int sbTabWidth = 195;
+ private int sbTabHeight = 25;
+ private int sbTabGroupHeight = 100;
+ private boolean sbTabIsOpaque=true;
+ private Color sbTabTopBorderColor = new Color(140, 171, 240);
+ private Color sbTabBottomBorderColor = new Color(70, 82, 116);
+ private Color sbTabTopSelectedBorderColor = new Color(96, 110, 145);
+ private Color sbTabBottomSelectedBorderColor = new Color(198, 226, 253);
+ private Color sbTabRightInnerBorderColor = new java.awt.Color(68, 76, 100);
+ private Color sbTabRightOuterBorderColor = new java.awt.Color(100, 114, 149);
+ private Font sbTabFont = new java.awt.Font("Arial", 1, 12);
+ private SBTab TheMenuLabelReference = new SBTab(null,sbTabWidth, sbTabHeight, sbTabLeftMargin, theCurrentMenuColor, theTextMenuColor, arrowIcon, iconTextGap, sbTabTopBorderColor, sbTabBottomBorderColor, sbTabRightInnerBorderColor, sbTabRightOuterBorderColor, sbTabIsOpaque);
+ private SBTab thePressedLabelReference = null;
+ private SBTab theEnteredLabelReference = null;
+
+ private void setSelectedMenuItem(SBTab theMenuLabel)
+  {
+    try
+    {
+        TheMenuLabelReference.setBackgroundColor(theCurrentMenuColor);
+	  TheMenuLabelReference.setTheTopBottomBorderColors(sbTabTopBorderColor, sbTabBottomBorderColor, sbTabRightInnerBorderColor, sbTabRightOuterBorderColor);
+        TheMenuLabelReference.setTheIcon(arrowIcon);
+        theMenuLabel.setBackgroundColor(theSelectedMenuColor);
+        theMenuLabel.setTheIcon(arrowSelectedIcon);
+	  theMenuLabel.setTheTopBottomBorderColors(sbTabTopSelectedBorderColor, sbTabBottomSelectedBorderColor, theSelectedMenuColor, theSelectedMenuColor);
+        TheMenuLabelReference = theMenuLabel;
+
+                 /*       try
+                        {
+                            setContentPanel((EAPanel)Class.forName(getSidebarComponentID(theMenuLabel.getComponentLocalizationID())).newInstance());
+                        }
+                        catch(InstantiationException e)
+                        {
+                            e.printStackTrace();
+                        }   
+                        catch(IllegalAccessException e)
+                        {
+                            e.printStackTrace();
+                        }                      
+                        catch(ClassNotFoundException e)
+                        {
+                            e.printStackTrace();
+                        }
+*/   
+	  theEAProperties.setSelectedIndex(0);
+	  EAListItem eaListItemObj = theEAProperties.getSelectedEAListItem();
+	  eaListItemObj.setSelectedMode();
+    }
+    catch(Exception e)
+    {
+	e.printStackTrace();
+    }
+  }    
+ 
+ boolean isEntered = false;
+ private void setMouseEnteredMenuLabel(SBTab theEnteredLabel)
+ {
+    isEntered = true;
+    try
+    {
+        theEnteredLabelReference = theEnteredLabel;
+        if(theEnteredLabel.equals(TheMenuLabelReference)==false)
+        {
+            theEnteredLabel.setTheIcon(arrowMouseOverIcon);
+            if(pressedSelected==true)
+            {
+                
+                TheMenuLabelReference.setForegroundColor(theTextMenuColor);
+            }
+        }
+        else
+        {
+            if(pressedSelected==true)
+            {
+                TheMenuLabelReference.setForegroundColor(theSelectedMenuColor);    
+            }
+        }
+    }
+    catch(Exception e)
+    {
+        System.out.println(e);
+    }     
+ }
+ private void setMouseExitedMenuLabel(SBTab theExitedLabel)
+ {
+    isEntered = false;
+    try
+    {
+        if(theExitedLabel.equals(TheMenuLabelReference)==false)
+        {
+            theExitedLabel.setTheIcon(arrowIcon);   
+        }
+        else
+        {
+            theEnteredLabelReference.setForegroundColor(theTextMenuColor);           
+        }
+    }
+    catch(Exception e)
+    {
+        System.out.println(e);
+    }  
+ }
+
+  private void setMousePressedMenuLabel(SBTab thePressedLabel)
+ {
+    try
+    {
+        thePressedLabelReference = thePressedLabel;
+        if(thePressedLabel.equals(TheMenuLabelReference)==false)
+        {
+            thePressedLabel.setBackgroundColor(theSelectedMenuColor); 
+	  	thePressedLabel.setTheTopBottomBorderColors(sbTabTopSelectedBorderColor, sbTabBottomSelectedBorderColor, theSelectedMenuColor, theSelectedMenuColor);
+        }
+        else
+        {
+            pressedSelected=true; 
+            thePressedLabel.setForegroundColor(theSelectedMenuColor);
+        }
+    }
+    catch(Exception e)
+    {
+        System.out.println(e);
+    }  
+ }
+ 
+  private void setMouseReleasedMenuLabel(SBTab theReleasedLabel)
+ {
+    try
+    {
+        pressedSelected = false;
+        if(theEnteredLabelReference.equals(thePressedLabelReference)==false || isEntered == false)
+        {
+            if(thePressedLabelReference.equals(TheMenuLabelReference)==false)
+            {
+                thePressedLabelReference.setBackgroundColor(theCurrentMenuColor);
+		    thePressedLabelReference.setTheTopBottomBorderColors(sbTabTopBorderColor, sbTabBottomBorderColor, sbTabRightInnerBorderColor, sbTabRightOuterBorderColor);
+            }
+            if(thePressedLabelReference.equals(TheMenuLabelReference)==true)
+            {           
+                thePressedLabelReference.setForegroundColor(theTextMenuColor);
+            }           
+        }
+        else
+        {
+            if(thePressedLabelReference.equals(TheMenuLabelReference)==true)
+            {           
+                thePressedLabelReference.setForegroundColor(theTextMenuColor);
+            }
+		else
+		{
+		    try
+		    {
+ 		        TheMenuLabelReference.setBackgroundColor(theCurrentMenuColor);
+			  TheMenuLabelReference.setTheTopBottomBorderColors(sbTabTopBorderColor, sbTabBottomBorderColor, sbTabRightInnerBorderColor, sbTabRightOuterBorderColor);
+ 		        TheMenuLabelReference.setTheIcon(arrowIcon);
+ 		        thePressedLabelReference.setTheIcon(arrowSelectedIcon);
+ 		        TheMenuLabelReference = thePressedLabelReference;
+                       /* try
+                        {
+                            setContentPanel((EAPanel)Class.forName(getSidebarComponentID(theReleasedLabel.getComponentLocalizationID())).newInstance());
+                        }
+                        catch(InstantiationException e)
+                        {
+                            e.printStackTrace();
+                        }   
+                        catch(IllegalAccessException e)
+                        {
+                            e.printStackTrace();
+                        }                      
+                        catch(ClassNotFoundException e)
+                        {
+                            e.printStackTrace();
+                        }*/
+  	  theEAProperties.setSelectedIndex(0);
+	  EAListItem eaListItemObj = theEAProperties.getSelectedEAListItem();
+	  eaListItemObj.setSelectedMode();   
+ 		    }
+		    catch(Exception e)
+		    {
+		        System.out.println(e);
+		    }
+		}
+        }
+        
+    }
+    catch(Exception e)
+    {
+        System.out.println(e);
+    }  
+ } 
+
+    private static synchronized Object[] getStringArraysFromString(String textArrayString)
+    {
+        ArrayList aryList = new ArrayList();
+        String tempString = "";
+        try
+        {
+            while(textArrayString.indexOf(",")!=-1)
+            {
+                tempString = textArrayString.substring(0,textArrayString.indexOf(","));
+                textArrayString = textArrayString.substring(textArrayString.indexOf(",") + 1);
+                aryList.add(tempString);
+            }
+            aryList.add(textArrayString);
+            aryList.trimToSize();
+        }
+        catch(NullPointerException e)
+        {
+         
+        }
+
+        return aryList.toArray();
+    }  
+
+private synchronized String getSidebarComponentID(String compRefID)
+{
+	try
+	{
+		return (String)sbMap.get(compRefID);
+	}
+	catch(Exception e)
+	{
+	e.printStackTrace();
+	}
+	return "";
+}
+
+private synchronized void initSidebar()
+{
+try
+{
+	Object[] sbUIStrings = getStringArraysFromString(DesignerRuleBuilder.get("sbRegistrationStrings"));
+	Object[] sbUIActions = getStringArraysFromString(DesignerRuleBuilder.get("sbRegistrationActionPanels"));
+//sbMap
+
+                    for(int i = 0;i<sbUIStrings.length;i++)
+                    {
+                        try
+				{
+					sbMap.put((String)sbUIStrings[i],(String)sbUIActions[i]);
+					//LeftMenuButtonPanel.add(new SBTab((String)sbUIStrings[i],sbTabWidth, sbTabHeight, sbTabLeftMargin, theCurrentMenuColor, theTextMenuColor, arrowIcon, iconTextGap, sbTabTopBorderColor, sbTabBottomBorderColor, sbTabRightInnerBorderColor, sbTabRightOuterBorderColor, sbTabIsOpaque));
+				}
+				catch(Exception e)
+				{
+					sbMap.put((String)sbUIStrings[i],"");
+				} 
+                    }
+}
+catch(Exception e)
+{
+	e.printStackTrace();
+}
+}
+
+public void setRegistrationCodeUserInterfacePropertyPanel()
+{
+	try
+	{
+	  theEAProperties.setDisableUITextFunction();
+	  theEAProperties.setHeaderText("User Interface Strings");
+	  theEAProperties.setHeaderTextAndWidth("User Interface Strings", 300, "String Value", 175, "", 0);
+	  theEAProperties.setAddButtonVisible(false);
+	  theEAProperties.setEditButtonVisible(false);
+	  theEAProperties.setRemoveButtonVisible(false);
+	  theEAProperties.setAddButtonDataEnabled(false);
+	  theEAProperties.setRemoveButtonDataEnabled(false);
+	  try
+	  {
+	  	theEAProperties.setPreviewButtonAction(DesignerRuleBuilder.get("registrationDialogPreviewAction"));
+	  }
+	  catch(Exception ee)
+	  {
+		ee.printStackTrace();
+	  }
+	  theEAProperties.setListDefaults(getUIStringEAListItems());
+	  theEAProperties.setSelectedIndex(0);
+	  EAListItem eaListItemObj = theEAProperties.getSelectedEAListItem();
+	  eaListItemObj.setSelectedMode();
+	}
+	catch(Exception e)
+	{
+		e.printStackTrace();
+	}
+}
+
+public void setRegistrationCodeActionsPropertyPanel()
+{
+	try
+	{
+	  theEAProperties.setDisableUITextFunction();
+	  theEAProperties.setHeaderText("Action Mappings");
+	  theEAProperties.setHeaderTextAndWidth("Action Mappings", 300, "Class Name", 175, "", 0);
+	  theEAProperties.setAddButtonVisible(false);
+	  theEAProperties.setEditButtonVisible(false);
+	  theEAProperties.setRemoveButtonVisible(false);
+	  theEAProperties.setAddButtonDataEnabled(false);
+	  theEAProperties.setRemoveButtonDataEnabled(false);
+	  try
+	  {
+	  	theEAProperties.setPreviewButtonAction(DesignerRuleBuilder.get("registrationDialogPreviewAction"));
+	  }
+	  catch(Exception ee)
+	  {
+		ee.printStackTrace();
+	  }
+	  theEAProperties.setListDefaults(getActionsEAListItems());
+	  theEAProperties.setSelectedIndex(0);
+	  EAListItem eaListItemObj = theEAProperties.getSelectedEAListItem();
+	  eaListItemObj.setSelectedMode();
+	}
+	catch(Exception e)
+	{
+		e.printStackTrace();
+	}
+}
+
+public void setRegistrationCodeSuccessUserInterfacePropertyPanel()
+{
+	try
+	{
+	  theEAProperties.setDisableUITextFunction();
+	  theEAProperties.setHeaderText("User Interface Strings");
+	  theEAProperties.setHeaderTextAndWidth("User Interface Strings", 300, "String Value", 175, "", 0);
+	  theEAProperties.setAddButtonVisible(false);
+	  theEAProperties.setEditButtonVisible(false);
+	  theEAProperties.setRemoveButtonVisible(false);
+	  theEAProperties.setAddButtonDataEnabled(false);
+	  theEAProperties.setRemoveButtonDataEnabled(false);
+	  theEAProperties.setDefaultRowIcon(theActionRowIcon);
+	  try
+	  {
+	  	theEAProperties.setPreviewButtonAction(DesignerRuleBuilder.get("registrationSuccessDialogPreviewAction"));
+	  }
+	  catch(Exception ee)
+	  {
+		ee.printStackTrace();
+	  }
+	  theEAProperties.setListDefaults(getSuccessUIStringEAListItems());
+	  theEAProperties.setSelectedIndex(0);
+	  EAListItem eaListItemObj = theEAProperties.getSelectedEAListItem();
+	  eaListItemObj.setSelectedMode();
+	}
+	catch(Exception e)
+	{
+		e.printStackTrace();
+	}
+}
+
+public void setRegistrationCodeSuccessActionsPropertyPanel()
+{
+	try
+	{
+	  theEAProperties.setDisableUITextFunction();
+	  theEAProperties.setHeaderText("Action Mappings");
+	  theEAProperties.setHeaderTextAndWidth("Action Mappings", 325, "Class Name", 150, "", 0);
+	  theEAProperties.setAddButtonVisible(false);
+	  theEAProperties.setEditButtonVisible(false);
+	  theEAProperties.setRemoveButtonVisible(false);
+	  theEAProperties.setAddButtonDataEnabled(false);
+	  theEAProperties.setRemoveButtonDataEnabled(false);
+	  try
+	  {
+	  	theEAProperties.setPreviewButtonAction(DesignerRuleBuilder.get("registrationSuccessDialogPreviewAction"));
+	  }
+	  catch(Exception ee)
+	  {
+		ee.printStackTrace();
+	  }
+	  theEAProperties.setListDefaults(getSuccessActionsEAListItems());
+	  theEAProperties.setSelectedIndex(0);
+	  EAListItem eaListItemObj = theEAProperties.getSelectedEAListItem();
+	  eaListItemObj.setSelectedMode();
+	}
+	catch(Exception e)
+	{
+		e.printStackTrace();
+	}
+}
+
+public void setRegistrationCodeFailedUserInterfacePropertyPanel()
+{
+	try
+	{
+	  theEAProperties.setDisableUITextFunction();
+	  theEAProperties.setHeaderText("User Interface Strings");
+	  theEAProperties.setHeaderTextAndWidth("User Interface Strings", 300, "String Value", 175, "", 0);
+	  theEAProperties.setAddButtonVisible(false);
+	  theEAProperties.setEditButtonVisible(false);
+	  theEAProperties.setRemoveButtonVisible(false);
+	  theEAProperties.setAddButtonDataEnabled(false);
+	  theEAProperties.setRemoveButtonDataEnabled(false);
+	  try
+	  {
+	  	theEAProperties.setPreviewButtonAction(DesignerRuleBuilder.get("registrationFailedDialogPreviewAction"));
+	  }
+	  catch(Exception ee)
+	  {
+		ee.printStackTrace();
+	  }
+	  theEAProperties.setListDefaults(getFailedUIStringEAListItems());
+	  theEAProperties.setSelectedIndex(0);
+	  EAListItem eaListItemObj = theEAProperties.getSelectedEAListItem();
+	  eaListItemObj.setSelectedMode();
+	}
+	catch(Exception e)
+	{
+		e.printStackTrace();
+	}
+}
+
+private void setConfigurationPropertyPanel()
+{
+	try
+	{
+	  theEAProperties.setUITextWithStartIndex("Software Evaluation Unlock Code ", 1, 1);
+	  theEAProperties.setHeaderText("Registration Code Configuration");
+	  theEAProperties.setHeaderTextAndWidth("Registration Code Configuration", 300, "Value", 175, "", 0);
+	  theEAProperties.setAddButtonVisible(true);
+	  theEAProperties.setEditButtonVisible(false);
+	  theEAProperties.setRemoveButtonVisible(true);
+	  theEAProperties.setDefaultRowIcon(theUIStringRowIcon);
+	  theEAProperties.setAddButtonDataEnabled(true);
+	  theEAProperties.setRemoveButtonDataEnabled(true);
+	  theEAProperties.setLabelWidth(275);
+	  theEAProperties.setDataWidth(375);
+	  try
+	  {
+	  	theEAProperties.setPreviewButtonAction(DesignerRuleBuilder.get("registrationDialogPreviewAction"));
+	  }
+	  catch(Exception ee)
+	  {
+		ee.printStackTrace();
+	  }
+	  theEAProperties.setListDefaults(getConfigurationEAListItems());
+	  theEAProperties.setSelectedIndex(0);
+	  EAListItem eaListItemObj = theEAProperties.getSelectedEAListItem();
+	  eaListItemObj.setSelectedMode();
+	}
+	catch(Exception e)
+	{
+		e.printStackTrace();
+	}
+}
+
+private int eaPropPanel = 0;
+private String[] UIStringArray = new String[8];
+private EAListItem[] UIStringEAListItemArray = new EAListItem[8];
+private EAListItem[] getUIStringEAListItems()
+{
+	  eaPropPanel = 0;
+        try
+        {
+		int defUIStringLabelWidth = 275;
+		int defUIStringDataWidth = 375;
+
+		EAListItem[] eaItems = new EAListItem[8];
+            EAListItem eai = new EAListItem(theUIStringRowIcon,rowColor);
+		EAListItemContent titleUIStringItem = new EAListItemContent(rowColor, defUIStringLabelWidth, defUIStringDataWidth);
+		titleUIStringItem.setLabelText("Registration Title: ");
+		if(ProjectManager.get("registerSoftwareWindowTitle")!=null)
+		{
+			titleUIStringItem.setInputText(ProjectManager.get("registerSoftwareWindowTitle"));
+			UIStringArray[0] = "registerSoftwareWindowTitle";
+		}
+            eai.setRowDataPanel(titleUIStringItem);
+		// Always call setListItemIsRemovable(false) after the ContentPanel is added, like in setRowDataPanel(...)
+		eai.setListItemIsRemovable(false);
+		eai.setValueBoxEnabled(false);
+		eaItems[0] = eai;
+//
+            EAListItem eai2 = new EAListItem(theUIStringRowIcon,rowColor);
+		EAListItemContent registrationCodeLabelUIStringItem = new EAListItemContent(rowColor, defUIStringLabelWidth, defUIStringDataWidth);
+		registrationCodeLabelUIStringItem.setLabelText("Registration Code Label: ");
+		if(ProjectManager.get("registrationCodeLabel")!=null)
+		{
+			registrationCodeLabelUIStringItem.setInputText(ProjectManager.get("registrationCodeLabel"));
+			UIStringArray[1] = "registrationCodeLabel";
+		}
+            eai2.setRowDataPanel(registrationCodeLabelUIStringItem);
+		// Always call setListItemIsRemovable(false) after the ContentPanel is added, like in setRowDataPanel(...)
+		eai2.setListItemIsRemovable(false);
+		eai2.setValueBoxEnabled(false);
+		eaItems[1] = eai2;
+//
+            EAListItem eai3 = new EAListItem(theUIStringRowIcon,rowColor);
+		EAListItemContent registrationPaidLabelUIStringItem3 = new EAListItemContent(rowColor, defUIStringLabelWidth, defUIStringDataWidth);
+		registrationPaidLabelUIStringItem3.setLabelText("Registration Paid Label Mnemonic: ");
+		if(ProjectManager.get("registrationCodeLabelFontMnemonic")!=null)
+		{
+			registrationPaidLabelUIStringItem3.setInputText(ProjectManager.get("registrationCodeLabelFontMnemonic"));
+			UIStringArray[2] = "registrationCodeLabelFontMnemonic";
+
+		}
+            eai3.setRowDataPanel(registrationPaidLabelUIStringItem3);
+		// Always call setListItemIsRemovable(false) after the ContentPanel is added, like in setRowDataPanel(...)
+		eai3.setListItemIsRemovable(false);
+		eai3.setValueBoxEnabled(false);
+		eaItems[2] = eai3;
+//
+            EAListItem eai4 = new EAListItem(theUIStringRowIcon,rowColor);
+		EAListItemContent registrationPaidLabelUIStringItem = new EAListItemContent(rowColor, defUIStringLabelWidth, defUIStringDataWidth);
+		registrationPaidLabelUIStringItem.setLabelText("Registration Paid Label: ");
+		if(ProjectManager.get("registrationPaidLabel")!=null)
+		{
+			//registrationPaidLabelUIStringItem.setInputText(ProjectManager.get("registrationPaidLabel"));
+			UIStringArray[3] = "registrationPaidLabel";
+			registrationPaidLabelUIStringItem.setInputTextColor(Color.blue);
+			registrationPaidLabelUIStringItem.setInputText("(Select the Label item to View, or Edit the Label below.)");
+			registrationPaidLabelUIStringItem.setInputTextColor(Color.blue);
+		}
+            eai4.setRowDataPanel(registrationPaidLabelUIStringItem);
+		// Always call setListItemIsRemovable(false) after the ContentPanel is added, like in setRowDataPanel(...)
+		eai4.setListItemIsRemovable(false);
+		eai4.setValueBoxEnabled(false);
+		eaItems[3] = eai4;
+//
+            EAListItem eai5 = new EAListItem(theUIStringRowIcon,rowColor);
+		EAListItemContent registrationPaidLabelUIStringItem5 = new EAListItemContent(rowColor, defUIStringLabelWidth, defUIStringDataWidth);
+		registrationPaidLabelUIStringItem5.setLabelText("Registration Register Button Text: ");
+		if(ProjectManager.get("registrationFinishButtonText")!=null)
+		{
+			registrationPaidLabelUIStringItem5.setInputText(ProjectManager.get("registrationFinishButtonText"));
+			UIStringArray[4] = "registrationFinishButtonText";
+
+		}
+            eai5.setRowDataPanel(registrationPaidLabelUIStringItem5);
+		// Always call setListItemIsRemovable(false) after the ContentPanel is added, like in setRowDataPanel(...)
+		eai5.setListItemIsRemovable(false);
+		eai5.setValueBoxEnabled(false);
+		eaItems[4] = eai5;
+//
+            EAListItem eai6 = new EAListItem(theUIStringRowIcon,rowColor);
+		EAListItemContent registrationPaidLabelUIStringItem6 = new EAListItemContent(rowColor, defUIStringLabelWidth, defUIStringDataWidth);
+		registrationPaidLabelUIStringItem6.setLabelText("Registration Register Button Mnemonic: ");
+		if(ProjectManager.get("registrationFinishButtonMnemonic")!=null)
+		{
+			registrationPaidLabelUIStringItem6.setInputText(ProjectManager.get("registrationFinishButtonMnemonic"));
+			UIStringArray[5] = "registrationFinishButtonMnemonic";
+
+		}
+            eai6.setRowDataPanel(registrationPaidLabelUIStringItem6);
+		// Always call setListItemIsRemovable(false) after the ContentPanel is added, like in setRowDataPanel(...)
+		eai6.setListItemIsRemovable(false);
+		eai6.setValueBoxEnabled(false);
+		eaItems[5] = eai6;
+//
+            EAListItem eai7 = new EAListItem(theUIStringRowIcon,rowColor);
+		EAListItemContent registrationPaidLabelUIStringItem7 = new EAListItemContent(rowColor, defUIStringLabelWidth, defUIStringDataWidth);
+		registrationPaidLabelUIStringItem7.setLabelText("Registration Cancel Button Text: ");
+		if(ProjectManager.get("registrationCancelButtonText")!=null)
+		{
+			registrationPaidLabelUIStringItem7.setInputText(ProjectManager.get("registrationCancelButtonText"));
+			UIStringArray[6] = "registrationCancelButtonText";
+
+		}
+            eai7.setRowDataPanel(registrationPaidLabelUIStringItem7);
+		// Always call setListItemIsRemovable(false) after the ContentPanel is added, like in setRowDataPanel(...)
+		eai7.setListItemIsRemovable(false);
+		eai7.setValueBoxEnabled(false);
+		eaItems[6] = eai7;
+//
+            EAListItem eai8 = new EAListItem(theUIStringRowIcon,rowColor);
+		EAListItemContent registrationPaidLabelUIStringItem8 = new EAListItemContent(rowColor, defUIStringLabelWidth, defUIStringDataWidth);
+		registrationPaidLabelUIStringItem8.setLabelText("Registration Cancel Button Mnemonic: ");
+		if(ProjectManager.get("registrationCancelButtonMnemonic")!=null)
+		{
+			registrationPaidLabelUIStringItem8.setInputText(ProjectManager.get("registrationCancelButtonMnemonic"));
+			UIStringArray[7] = "registrationCancelButtonMnemonic";
+
+		}
+            eai8.setRowDataPanel(registrationPaidLabelUIStringItem8);
+		// Always call setListItemIsRemovable(false) after the ContentPanel is added, like in setRowDataPanel(...)
+		eai8.setListItemIsRemovable(false);
+		eai8.setValueBoxEnabled(false);
+		eaItems[7] = eai8;
+
+		UIStringEAListItemArray = eaItems;
+
+		return eaItems;
+        }
+        catch(Exception e)
+        {
+          e.printStackTrace();   
+        }
+	EAListItem[] tempLIArray2 = new EAListItem[0];
+	return tempLIArray2;
+}
+
+private String[] strActionsArray = new String[3];
+private EAListItem[] ActionsEAListItemArray = new EAListItem[3];
+private EAListItem[] getActionsEAListItems()
+{
+	  eaPropPanel = 1;
+        try
+        {
+		int defActionLabelWidth = 275;
+		int defActionDataWidth = 375;
+
+		EAListItem[] eaItems = new EAListItem[3];
+            EAListItem eai = new EAListItem(theActionRowIcon,rowColor);
+		EAListItemContent loadRegistrationCodeUIActionItem = new EAListItemContent(rowColor, defActionLabelWidth, defActionDataWidth);
+		loadRegistrationCodeUIActionItem.setLabelText("Load Registration Code UI Action: ");
+		if(ProjectManager.get("enterRegistrationCodeAction")!=null)
+		{
+			loadRegistrationCodeUIActionItem.setInputText(ProjectManager.get("enterRegistrationCodeAction"));
+			strActionsArray[0] = "enterRegistrationCodeAction";
+		}
+            eai.setRowDataPanel(loadRegistrationCodeUIActionItem);
+		// Always call setListItemIsRemovable(false) after the ContentPanel is added, like in setRowDataPanel(...)
+		eai.setListItemIsRemovable(false);
+		eai.setValueBoxEnabled(false);
+		eaItems[0] = eai;
+//
+            EAListItem eai2 = new EAListItem(theActionRowIcon,rowColor);
+		EAListItemContent registrationSuccessUIActionItem = new EAListItemContent(rowColor, defActionLabelWidth, defActionDataWidth);
+		registrationSuccessUIActionItem.setLabelText("Registration Success UI Action: ");
+		if(ProjectManager.get("registrationSuccessUIAction")!=null)
+		{
+			registrationSuccessUIActionItem.setInputText(ProjectManager.get("registrationSuccessUIAction"));
+			strActionsArray[1] = "registrationSuccessUIAction";
+		}
+            eai2.setRowDataPanel(registrationSuccessUIActionItem);
+		// Always call setListItemIsRemovable(false) after the ContentPanel is added, like in setRowDataPanel(...)
+		eai2.setListItemIsRemovable(false);
+		eai2.setValueBoxEnabled(false);
+		eaItems[1] = eai2;
+//
+            EAListItem eai3 = new EAListItem(theActionRowIcon,rowColor);
+		EAListItemContent registrationFailedUIActionItem = new EAListItemContent(rowColor, defActionLabelWidth, defActionDataWidth);
+		registrationFailedUIActionItem.setLabelText("Registration Failed UI Action: ");
+		if(ProjectManager.get("registrationFailedUIAction")!=null)
+		{
+			registrationFailedUIActionItem.setInputText(ProjectManager.get("registrationFailedUIAction"));
+			strActionsArray[2] = "registrationFailedUIAction";
+		}
+            eai3.setRowDataPanel(registrationFailedUIActionItem);
+		// Always call setListItemIsRemovable(false) after the ContentPanel is added, like in setRowDataPanel(...)
+		eai3.setListItemIsRemovable(false);
+		eai3.setValueBoxEnabled(false);
+		eaItems[2] = eai3;
+		ActionsEAListItemArray = eaItems;
+
+		return eaItems;
+        }
+        catch(Exception e)
+        {
+          e.printStackTrace();   
+        }
+	EAListItem[] tempLIArray2 = new EAListItem[0];
+	return tempLIArray2;
+}
+////////////////////////////////////////
+private String[] UISuccessStringArray = new String[5];
+private EAListItem[] UISuccessEAListItemArray = new EAListItem[5];
+private EAListItem[] getSuccessUIStringEAListItems()
+{
+	  eaPropPanel = 2;
+        try
+        {
+		int defUIStringLabelWidth = 275;
+		int defUIStringDataWidth = 375;
+
+		EAListItem[] eaItems = new EAListItem[5];
+            EAListItem eai = new EAListItem(theUIStringRowIcon,rowColor);
+		EAListItemContent titleUIStringItem = new EAListItemContent(rowColor, defUIStringLabelWidth, defUIStringDataWidth);
+		titleUIStringItem.setLabelText("Registration Succeeded Title: ");
+		if(ProjectManager.get("registrationSuccessWindowTitle")!=null)
+		{
+			titleUIStringItem.setInputText(ProjectManager.get("registrationSuccessWindowTitle"));
+			UISuccessStringArray[0] = "registrationSuccessWindowTitle";
+		}
+            eai.setRowDataPanel(titleUIStringItem);
+		// Always call setListItemIsRemovable(false) after the ContentPanel is added, like in setRowDataPanel(...)
+		eai.setListItemIsRemovable(false);
+		eai.setValueBoxEnabled(false);
+		eaItems[0] = eai;
+//
+            EAListItem eai2 = new EAListItem(theUIStringRowIcon,rowColor);
+		EAListItemContent titleUIStringItem2 = new EAListItemContent(rowColor, defUIStringLabelWidth, defUIStringDataWidth);
+		titleUIStringItem2.setLabelText("Registration Succeeded Header Label: ");
+		if(ProjectManager.get("registrationSuccessHeader")!=null)
+		{
+			titleUIStringItem2.setInputText(ProjectManager.get("registrationSuccessHeader"));
+			UISuccessStringArray[1] = "registrationSuccessHeader";
+		}
+            eai2.setRowDataPanel(titleUIStringItem2);
+		// Always call setListItemIsRemovable(false) after the ContentPanel is added, like in setRowDataPanel(...)
+		eai2.setListItemIsRemovable(false);
+		eai2.setValueBoxEnabled(false);
+		eaItems[1] = eai2;
+//
+            EAListItem eai3 = new EAListItem(theUIStringRowIcon,rowColor);
+		EAListItemContent titleUIStringItem3 = new EAListItemContent(rowColor, defUIStringLabelWidth, defUIStringDataWidth);
+		titleUIStringItem3.setLabelText("Registration Succeeded Description: ");
+		if(ProjectManager.get("registrationSuccessDesc")!=null)
+		{
+			titleUIStringItem3.setInputText(ProjectManager.get("registrationSuccessDesc"));
+			UISuccessStringArray[2] = "registrationSuccessDesc";
+		}
+            eai3.setRowDataPanel(titleUIStringItem3);
+		// Always call setListItemIsRemovable(false) after the ContentPanel is added, like in setRowDataPanel(...)
+		eai3.setListItemIsRemovable(false);
+		eai3.setValueBoxEnabled(false);
+		eaItems[2] = eai3;
+//
+            EAListItem eai4 = new EAListItem(theUIStringRowIcon,rowColor);
+		EAListItemContent titleUIStringItem4 = new EAListItemContent(rowColor, defUIStringLabelWidth, defUIStringDataWidth);
+		titleUIStringItem4.setLabelText("Registration Succeeded Button Text: ");
+		if(ProjectManager.get("registrationSuccessOK")!=null)
+		{
+			titleUIStringItem4.setInputText(ProjectManager.get("registrationSuccessOK"));
+			UISuccessStringArray[3] = "registrationSuccessOK";
+		}
+            eai4.setRowDataPanel(titleUIStringItem4);
+		// Always call setListItemIsRemovable(false) after the ContentPanel is added, like in setRowDataPanel(...)
+		eai4.setListItemIsRemovable(false);
+		eai4.setValueBoxEnabled(false);
+		eaItems[3] = eai4;
+//
+            EAListItem eai5 = new EAListItem(theUIStringRowIcon,rowColor);
+		EAListItemContent titleUIStringItem5 = new EAListItemContent(rowColor, defUIStringLabelWidth, defUIStringDataWidth);
+		titleUIStringItem5.setLabelText("Registration Succeeded Button Mnemonic: ");
+		if(ProjectManager.get("registrationSuccessOKMnemonic")!=null)
+		{
+			titleUIStringItem5.setInputText(ProjectManager.get("registrationSuccessOKMnemonic"));
+			UISuccessStringArray[4] = "registrationSuccessOKMnemonic";
+		}
+            eai5.setRowDataPanel(titleUIStringItem5);
+		// Always call setListItemIsRemovable(false) after the ContentPanel is added, like in setRowDataPanel(...)
+		eai5.setListItemIsRemovable(false);
+		eai5.setValueBoxEnabled(false);
+		eaItems[4] = eai5;
+//
+
+		UISuccessEAListItemArray = eaItems;
+
+		return eaItems;
+        }
+        catch(Exception e)
+        {
+          e.printStackTrace();   
+        }
+	EAListItem[] tempLIArray2 = new EAListItem[0];
+	return tempLIArray2;
+}
+
+private String[] strSuccessActionsArray = new String[3];
+private EAListItem[] SuccessActionsEAListItemArray = new EAListItem[3];
+private EAListItem[] getSuccessActionsEAListItems()
+{
+	  eaPropPanel = 3;
+        try
+        {
+		int defActionLabelWidth = 300;
+		int defActionDataWidth = 350;
+
+		EAListItem[] eaItems = new EAListItem[3];
+            EAListItem eai = new EAListItem(theActionRowIcon,rowColor);
+		EAListItemContent registrationSucceededActionItem = new EAListItemContent(rowColor, defActionLabelWidth, defActionDataWidth);
+		registrationSucceededActionItem.setLabelText("Registration Succeeded Action: ");
+		if(ProjectManager.get("registrationSucceededAction")!=null)
+		{
+			registrationSucceededActionItem.setInputText(ProjectManager.get("registrationSucceededAction"));
+			strSuccessActionsArray[0] = "registrationSucceededAction";
+		}
+            eai.setRowDataPanel(registrationSucceededActionItem);
+		// Always call setListItemIsRemovable(false) after the ContentPanel is added, like in setRowDataPanel(...)
+		eai.setListItemIsRemovable(false);
+		eai.setValueBoxEnabled(false);
+		eaItems[0] = eai;
+//
+            EAListItem eai6 = new EAListItem(theActionRowIcon,rowColor);
+		EAListItemContent titleUIStringItem6 = new EAListItemContent(rowColor, defActionLabelWidth, defActionDataWidth);
+		titleUIStringItem6.setLabelText("Exit application on registration success:");
+		if(ProjectManager.get("registrationRestartAtReg")!=null)
+		{
+			titleUIStringItem6.setInputText(ProjectManager.get("registrationRestartAtReg"));
+			strSuccessActionsArray[1] = "registrationRestartAtReg";
+		}
+            eai6.setRowDataPanel(titleUIStringItem6);
+		// Always call setListItemIsRemovable(false) after the ContentPanel is added, like in setRowDataPanel(...)
+		eai6.setListItemIsRemovable(false);
+		eai6.setValueBoxEnabled(false);
+		eaItems[1] = eai6;
+//
+            EAListItem eai12 = new EAListItem(theActionRowIcon,rowColor);
+		EAListItemContent paymentSucceededActionMessage = new EAListItemContent(rowColor, defActionLabelWidth, defActionDataWidth);
+		paymentSucceededActionMessage.setLabelText("Exit application on registration success message:");
+		if(ProjectManager.get("paymentSucceededActionMessage")!=null)
+		{
+			//paymentSucceededActionMessage.setInputText(ProjectManager.get("paymentSucceededActionMessage"));
+			strSuccessActionsArray[2] = "paymentSucceededActionMessage";
+			paymentSucceededActionMessage.setInputTextColor(Color.blue);
+			paymentSucceededActionMessage.setInputText("(Select the Label item to View, or Edit the Label below.)");
+			paymentSucceededActionMessage.setInputTextColor(Color.blue);
+		}
+            eai12.setRowDataPanel(paymentSucceededActionMessage);
+		// Always call setListItemIsRemovable(false) after the ContentPanel is added, like in setRowDataPanel(...)
+		eai12.setListItemIsRemovable(false);
+		eai12.setValueBoxEnabled(false);
+		eaItems[2] = eai12;
+
+		SuccessActionsEAListItemArray = eaItems;
+
+		return eaItems;
+        }
+        catch(Exception e)
+        {
+          e.printStackTrace();   
+        }
+	EAListItem[] tempLIArray2 = new EAListItem[0];
+	return tempLIArray2;
+}
+
+private String[] UIFailedStringArray = new String[4];
+private EAListItem[] UIFailedEAListItemArray = new EAListItem[4];
+private EAListItem[] getFailedUIStringEAListItems()
+{
+	  eaPropPanel = 4;
+        try
+        {
+		int defUIStringLabelWidth = 275;
+		int defUIStringDataWidth = 375;
+
+		EAListItem[] eaItems = new EAListItem[4];
+            EAListItem eai = new EAListItem(theUIStringRowIcon,rowColor);
+		EAListItemContent titleUIStringItem = new EAListItemContent(rowColor, defUIStringLabelWidth, defUIStringDataWidth);
+		titleUIStringItem.setLabelText("Registration Failed Title: ");
+		if(ProjectManager.get("registrationFailedWindowTitle")!=null)
+		{
+			titleUIStringItem.setInputText(ProjectManager.get("registrationFailedWindowTitle"));
+			UIFailedStringArray[0] = "registrationFailedWindowTitle";
+		}
+            eai.setRowDataPanel(titleUIStringItem);
+		// Always call setListItemIsRemovable(false) after the ContentPanel is added, like in setRowDataPanel(...)
+		eai.setListItemIsRemovable(false);
+		eai.setValueBoxEnabled(false);
+		eaItems[0] = eai;
+//
+            EAListItem eai2 = new EAListItem(theUIStringRowIcon,rowColor);
+		EAListItemContent registrationFailedMessageUIStringItem = new EAListItemContent(rowColor, defUIStringLabelWidth, defUIStringDataWidth);
+		registrationFailedMessageUIStringItem.setLabelText("Registration Failed Message: ");
+		if(ProjectManager.get("registrationFailedMessage")!=null)
+		{
+			registrationFailedMessageUIStringItem.setInputText(ProjectManager.get("registrationFailedMessage"));
+			UIFailedStringArray[1] = "registrationFailedMessage";
+		}
+            eai2.setRowDataPanel(registrationFailedMessageUIStringItem);
+		// Always call setListItemIsRemovable(false) after the ContentPanel is added, like in setRowDataPanel(...)
+		eai2.setListItemIsRemovable(false);
+		eai2.setValueBoxEnabled(false);
+		eaItems[1] = eai2;
+//
+            EAListItem eai3 = new EAListItem(theUIStringRowIcon,rowColor);
+		EAListItemContent registrationFailedMessageUIStringItem3 = new EAListItemContent(rowColor, defUIStringLabelWidth, defUIStringDataWidth);
+		registrationFailedMessageUIStringItem3.setLabelText("Registration Failed OK Button Text: ");
+		if(ProjectManager.get("registrationFailureOK")!=null)
+		{
+			registrationFailedMessageUIStringItem3.setInputText(ProjectManager.get("registrationFailureOK"));
+			UIFailedStringArray[2] = "registrationFailureOK";
+		}
+            eai3.setRowDataPanel(registrationFailedMessageUIStringItem3);
+		// Always call setListItemIsRemovable(false) after the ContentPanel is added, like in setRowDataPanel(...)
+		eai3.setListItemIsRemovable(false);
+		eai3.setValueBoxEnabled(false);
+		eaItems[2] = eai3;
+//
+            EAListItem eai4 = new EAListItem(theUIStringRowIcon,rowColor);
+		EAListItemContent registrationFailedMessageUIStringItem4 = new EAListItemContent(rowColor, defUIStringLabelWidth, defUIStringDataWidth);
+		registrationFailedMessageUIStringItem4.setLabelText("Registration Failed OK Button Mnemonic: ");
+		if(ProjectManager.get("registrationFailureOKMnemonic")!=null)
+		{
+			registrationFailedMessageUIStringItem4.setInputText(ProjectManager.get("registrationFailureOKMnemonic"));
+			UIFailedStringArray[3] = "registrationFailureOKMnemonic";
+		}
+            eai4.setRowDataPanel(registrationFailedMessageUIStringItem4);
+		// Always call setListItemIsRemovable(false) after the ContentPanel is added, like in setRowDataPanel(...)
+		eai4.setListItemIsRemovable(false);
+		eai4.setValueBoxEnabled(false);
+		eaItems[3] = eai4;
+
+		UIFailedEAListItemArray = eaItems;
+
+		return eaItems;
+        }
+        catch(Exception e)
+        {
+          e.printStackTrace();   
+        }
+	EAListItem[] tempLIArray2 = new EAListItem[0];
+	return tempLIArray2;
+}
+
+private String[] ConfigurationStringArray = new String[2];
+private EAListItem[] ConfigurationEAListItemArray = new EAListItem[2];
+private EAListItem[] getConfigurationEAListItems()
+{
+	  eaPropPanel = 5;
+        try
+        {
+		int defUIStringLabelWidth = 275;
+		int defUIStringDataWidth = 375;
+
+		Object[] theObjArray = new Object[0];
+		if(ProjectManager.get("registeredCode")!=null)
+		{
+			theObjArray = getStringArraysFromString(ProjectManager.get("registeredCode"));
+		}
+		EAListItem[] eaItems = new EAListItem[theObjArray.length + 1];
+		ConfigurationStringArray = new String[theObjArray.length + 1];
+		ConfigurationEAListItemArray = new EAListItem[theObjArray.length + 1];
+		if(1<=theObjArray.length)
+		{
+			
+            	EAListItem eai = new EAListItem(theUIStringRowIcon,rowColor);
+			EAListItemContent softwareEvaluationUnlockCodeItem = new EAListItemContent(rowColor, defUIStringLabelWidth, defUIStringDataWidth);
+			softwareEvaluationUnlockCodeItem.setLabelText("Master Software Evaluation Unlock Code:");
+			if(ProjectManager.get("registeredCode")!=null)
+			{
+				softwareEvaluationUnlockCodeItem.setInputText((String)theObjArray[0]);
+				ConfigurationStringArray[0] = "registeredCode";
+			}
+            	eai.setRowDataPanel(softwareEvaluationUnlockCodeItem);
+			// Always call setListItemIsRemovable(false) after the ContentPanel is added, like in setRowDataPanel(...)
+			eai.setListItemIsRemovable(false);
+			eai.setValueBoxEnabled(false);
+			eaItems[0] = eai;
+			for(int i = 1;i<theObjArray.length;i++)
+			{
+            		EAListItem eai3 = new EAListItem(theUIStringRowIcon,rowColor);
+				EAListItemContent softwareEvaluationUnlockCodeItem2 = new EAListItemContent(rowColor, defUIStringLabelWidth, defUIStringDataWidth);
+				softwareEvaluationUnlockCodeItem2.setLabelText("Software Evaluation Unlock Code " + String.valueOf(i) + ":");
+				//
+				softwareEvaluationUnlockCodeItem2.setInputText((String)theObjArray[i]);
+				ConfigurationStringArray[i] = "registeredCode";
+				//
+            		eai3.setRowDataPanel(softwareEvaluationUnlockCodeItem2);
+				// Always call setListItemIsRemovable(false) after the ContentPanel is added, like in setRowDataPanel(...)
+				eai3.setListItemIsRemovable(true);
+				eai3.setValueBoxEnabled(false);
+				eaItems[i] = eai3;				
+			}
+		}
+		else
+		{
+            	EAListItem eai = new EAListItem(theUIStringRowIcon,rowColor);
+			EAListItemContent softwareEvaluationUnlockCodeItem = new EAListItemContent(rowColor, defUIStringLabelWidth, defUIStringDataWidth);
+			softwareEvaluationUnlockCodeItem.setLabelText("Master Software Evaluation Unlock Code:");
+			if(ProjectManager.get("registeredCode")!=null)
+			{
+				softwareEvaluationUnlockCodeItem.setInputText("");
+				ConfigurationStringArray[0] = "registeredCode";
+			}
+            	eai.setRowDataPanel(softwareEvaluationUnlockCodeItem);
+			// Always call setListItemIsRemovable(false) after the ContentPanel is added, like in setRowDataPanel(...)
+			eai.setListItemIsRemovable(false);
+			eai.setValueBoxEnabled(false);
+			eaItems[0] = eai;
+		}
+//
+		ConfigurationEAListItemArray = eaItems;
+
+		return eaItems;
+        }
+        catch(Exception e)
+        {
+          e.printStackTrace();   
+        }
+	EAListItem[] tempLIArray2 = new EAListItem[0];
+	return tempLIArray2;
+}
+RegistrationConfigurationPanel oiip = null;
+/////////////////////////////////////////
+
+    public void setSelectedListItemEvent(int theLastSelectedIndex)
+    {
+		try
+		{
+			TheContentPanelReference.getDataUpdate();
+		}
+		catch(Exception e)
+		{
+			e.printStackTrace();
+		}
+		/*if(eaPropPanel!=0)
+		{*/
+
+	 	//Possibly where to fix display updates on the panel
+		EAListItem eaListItemObj = theEAProperties.getSelectedEAListItem();
+		EAListItemContent theContent = eaListItemObj.getRowDataPanel();
+		if(eaPropPanel==0)
+		{
+			if(theLastSelectedIndex!=-1)
+			{
+				try
+				{
+					if(theLastSelectedIndex!=3)
+					{
+						theEAProperties.getSelectedEAListItem().getRowDataPanel().setInputText(ProjectManager.get(UIStringArray[theLastSelectedIndex]));
+					}
+				}
+				catch(Exception e)
+				{
+					e.printStackTrace();
+				}
+			}
+
+			//UI Strings Panel Selected
+			//UIStringArray
+			if(theEAProperties.getSelectedIndex()!=3)
+			{
+				//Is not the Privacy Policy
+				DataContentPanelFourthTier tempPanel = new DataContentPanelFourthTier("The Registration Code User Interface String is defined below");
+				tempPanel.setContentPanel(new TextFieldPanelFourthTier(UIStringEAListItemArray[theEAProperties.getSelectedIndex()].getRowDataPanel().getLabelText(), ProjectManager.get(UIStringArray[theEAProperties.getSelectedIndex()]), UIStringArray[theEAProperties.getSelectedIndex()], true));
+//				setContentPanel(tempPanel);
+				RegistrationCodeUIPanel rcuip = new RegistrationCodeUIPanel();
+				rcuip.setParentComponent(this);
+				rcuip.setUISelected();
+				rcuip.setContentPanel(tempPanel);
+				setContentPanel(rcuip);
+			}
+			else
+			{
+
+				//Is the Privacy Policy 
+				DataContentPanelFourthTier tempPanel = new DataContentPanelFourthTier("The Registration Code User Interface String is defined below");
+				tempPanel.setContentPanel(new TextPanePanelFourthTier(UIStringEAListItemArray[theEAProperties.getSelectedIndex()].getRowDataPanel().getLabelText(), ProjectManager.get(UIStringArray[theEAProperties.getSelectedIndex()]), UIStringArray[theEAProperties.getSelectedIndex()], true));
+//				setContentPanel(tempPanel);
+				RegistrationCodeUIPanel rcuip = new RegistrationCodeUIPanel();
+				rcuip.setParentComponent(this);
+				rcuip.setUISelected();
+				rcuip.setContentPanel(tempPanel);
+				setContentPanel(rcuip);
+			}
+		}
+		else if(eaPropPanel==1)
+		{
+			if(theLastSelectedIndex!=-1)
+			{
+				try
+				{
+					theEAProperties.getSelectedEAListItem().getRowDataPanel().setInputText(ProjectManager.get(strActionsArray[theLastSelectedIndex]));
+				}
+				catch(Exception e)
+				{
+					e.printStackTrace();
+				}
+			}
+
+			//Registration Code Actions Panel Selected
+			//strActionsArray
+			DataContentPanelFourthTier tempPanel = new DataContentPanelFourthTier("The Registration Code Action is defined below");
+			tempPanel.setContentPanel(new TextFieldPanelFourthTier(ActionsEAListItemArray[theEAProperties.getSelectedIndex()].getRowDataPanel().getLabelText(), ProjectManager.get(strActionsArray[theEAProperties.getSelectedIndex()]), strActionsArray[theEAProperties.getSelectedIndex()], false));
+//			setContentPanel(tempPanel);
+			RegistrationCodeUIPanel rcuip = new RegistrationCodeUIPanel();
+			rcuip.setParentComponent(this);
+			rcuip.setActionSelected();
+			rcuip.setContentPanel(tempPanel);
+			setContentPanel(rcuip);
+		}
+		else if(eaPropPanel==2)
+		{
+			if(theLastSelectedIndex!=-1)
+			{
+				if(theLastSelectedIndex!=3)
+				{
+					try
+					{
+						theEAProperties.getSelectedEAListItem().getRowDataPanel().setInputText(ProjectManager.get(UISuccessStringArray[theLastSelectedIndex]));
+					}
+					catch(Exception e)
+					{
+						e.printStackTrace();
+					}
+				}
+			}
+			//UI Strings Success Panel Selected
+			//UISuccessStringArray
+				DataContentPanelFourthTier tempPanel = new DataContentPanelFourthTier("The Registration Code Success User Interface String is defined below");
+				tempPanel.setContentPanel(new TextFieldPanelFourthTier(UISuccessEAListItemArray[theEAProperties.getSelectedIndex()].getRowDataPanel().getLabelText(), ProjectManager.get(UISuccessStringArray[theEAProperties.getSelectedIndex()]), UISuccessStringArray[theEAProperties.getSelectedIndex()], true));
+				RegistrationCodeSuccessUIPanel rcsuip = new RegistrationCodeSuccessUIPanel();
+				rcsuip.setParentComponent(this);
+				rcsuip.setUISelected();
+				rcsuip.setContentPanel(tempPanel);
+				setContentPanel(rcsuip);
+		}
+		else if(eaPropPanel==3)
+		{
+			if(theLastSelectedIndex!=-1 && theLastSelectedIndex!=2)
+			{
+				try
+				{
+					theEAProperties.getSelectedEAListItem().getRowDataPanel().setInputText(ProjectManager.get(strSuccessActionsArray[theLastSelectedIndex]));
+				}
+				catch(Exception e)
+				{
+					e.printStackTrace();
+				}
+			}
+			//Registration Code Success Actions Panel Selected
+			//strSuccessActionsArray
+			if(theEAProperties.getSelectedIndex()!=2)
+			{
+				DataContentPanelFourthTier tempPanel = new DataContentPanelFourthTier("The Registration Code Success Action is defined below");
+				try
+				{
+					if(theLastSelectedIndex==1)
+					{
+						tempPanel.setContentPanel(new TextFieldPanelFourthTier(SuccessActionsEAListItemArray[theEAProperties.getSelectedIndex()].getRowDataPanel().getLabelText(), ProjectManager.get(strSuccessActionsArray[theEAProperties.getSelectedIndex()]), strSuccessActionsArray[theEAProperties.getSelectedIndex()], false));
+					}
+					else
+					{
+						tempPanel.setContentPanel(new TextFieldPanelFourthTier(SuccessActionsEAListItemArray[theEAProperties.getSelectedIndex()].getRowDataPanel().getLabelText(), ProjectManager.get(strSuccessActionsArray[theEAProperties.getSelectedIndex()]), strSuccessActionsArray[theEAProperties.getSelectedIndex()], true));
+					}
+				}
+				catch(Exception e)
+				{
+					e.printStackTrace();
+				}
+//				setContentPanel(tempPanel);
+				RegistrationCodeSuccessUIPanel rcsuip = new RegistrationCodeSuccessUIPanel();
+				rcsuip.setParentComponent(this);
+				rcsuip.setActionSelected();
+				rcsuip.setContentPanel(tempPanel);
+				setContentPanel(rcsuip);
+			}
+			else
+			{
+				DataContentPanelFourthTier tempPanel = new DataContentPanelFourthTier("The Registration Code Success Action is defined below");
+				tempPanel.setContentPanel(new TextPanePanelFourthTier(SuccessActionsEAListItemArray[theEAProperties.getSelectedIndex()].getRowDataPanel().getLabelText(), ProjectManager.get(strSuccessActionsArray[theEAProperties.getSelectedIndex()]), strSuccessActionsArray[theEAProperties.getSelectedIndex()], true));
+//				setContentPanel(tempPanel);
+				RegistrationCodeSuccessUIPanel rcsuip = new RegistrationCodeSuccessUIPanel();
+				rcsuip.setParentComponent(this);
+				rcsuip.setUISelected();
+				rcsuip.setContentPanel(tempPanel);
+				setContentPanel(rcsuip);
+				//tempPanel.setContentPanel(new TextPanePanelFourthTier(SuccessActionsEAListItemArray[theEAProperties.getSelectedIndex()].getRowDataPanel().getLabelText(), ProjectManager.get(strSuccessActionsArray[theEAProperties.getSelectedIndex()]), strSuccessActionsArray[theEAProperties.getSelectedIndex()], true));
+			}
+		}
+		else if(eaPropPanel==4)
+		{
+			if(theLastSelectedIndex!=-1)
+			{
+				try
+				{
+					theEAProperties.getSelectedEAListItem().getRowDataPanel().setInputText(ProjectManager.get(UIFailedStringArray[theLastSelectedIndex]));
+				}
+				catch(Exception e)
+				{
+					e.printStackTrace();
+				}
+			}
+			//UI Strings Failed Panel Selected
+			//UIFailedStringArray
+			DataContentPanelFourthTier tempPanel = new DataContentPanelFourthTier("The Registration Code Failed User Interface String is defined below");
+			tempPanel.setContentPanel(new TextFieldPanelFourthTier(UIFailedEAListItemArray[theEAProperties.getSelectedIndex()].getRowDataPanel().getLabelText(), ProjectManager.get(UIFailedStringArray[theEAProperties.getSelectedIndex()]), UIFailedStringArray[theEAProperties.getSelectedIndex()], true));
+			RegistrationCodeFailedUIPanel rcfuip = new RegistrationCodeFailedUIPanel();
+			rcfuip.setParentComponent(this);
+			rcfuip.setUISelected();
+			rcfuip.setContentPanel(tempPanel);
+			setContentPanel(rcfuip);
+		}
+		else if(eaPropPanel==5)
+		{
+			DataContentPanel tempPanel = new DataContentPanel("The Registration Code Configuration can be set below.");
+			oiip = new RegistrationConfigurationPanel(theEAProperties.getSelectedIndex());
+			oiip.setMasterStatusController(this);
+			tempPanel.setContentPanel(oiip);
+			setContentPanel(tempPanel);
+		}
+		
+    }
+
+ public String getAddButtonData()
+ {
+	String newRegCode = "777" + "-" + String.valueOf(ProjectManager.getRandomInt(999999998)) + "-" + String.valueOf(ProjectManager.getRandomInt(999999999));
+	TheContentPanelReference.getDataUpdate();
+	DataContentPanel tempPanel = new DataContentPanel("The Registration Code Configuration can be set below.");
+	oiip = new RegistrationConfigurationPanel(theEAProperties.getSelectedIndex());
+	oiip.setMasterStatusController(this);
+	tempPanel.setContentPanel(oiip);
+	setContentPanel(tempPanel);
+	oiip.addNewRegistrationCode(newRegCode);
+	return newRegCode;
+ }
+
+ public void setRemoveButtonData(int regCodeIndex)
+ {
+	oiip.removeRegistrationCode(regCodeIndex);
+ }
+
+    private String getStringFromArray(Object[] theArray)
+    {
+        String currentString = null;
+        try
+        {
+            if(theArray.length!=0)
+            {
+                currentString = (String)theArray[0];
+                for(int i = 1;i<theArray.length;i++)
+                {
+                    try
+                    {
+                        currentString = currentString + "," + (String)theArray[i];
+                    }
+                    catch(NullPointerException e)
+                    {
+                        if(currentString.endsWith(",")==true)
+                        {
+                            System.out.println("NullPointerException thrown CurrentString is: " + currentString.substring(0,currentString.lastIndexOf(",")));
+                            currentString = currentString.substring(0,currentString.lastIndexOf(","));
+                        }
+                    }
+                }
+                return currentString;
+            }
+        }
+        catch(Exception e)
+        {
+            if(currentString!=null)
+            {
+                if(currentString.endsWith(",")==false)
+                {
+                    return currentString;
+                }
+                else
+                {
+                    System.out.println("Exception thrown CurrentString is: " + currentString.substring(0,currentString.lastIndexOf(",")));
+                    return currentString.substring(0,currentString.lastIndexOf(","));
+                }
+            }
+        }
+        return "";
+    } 
+    
+    // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JPanel MaxRegistrationAttemptsLeftContentPanel;
+    private javax.swing.JPanel MaxRegistrationAttemptsRightFillerPanel;
+    private javax.swing.JPanel MaxRegistrationAttemptsSettingsPanel;
+    private javax.swing.JPanel RegistrationCentralContentLeftMarginPanel;
+    private javax.swing.JPanel RegistrationCentralContentPanel;
+    private javax.swing.JPanel RegistrationCentralContentRightMarginPanel;
+    private javax.swing.JPanel RegistrationContentBottomPanel;
+    private javax.swing.JPanel RegistrationContentPanel;
+    private javax.swing.JPanel RegistrationContentPanelItem3;
+    private javax.swing.JPanel RegistrationContentPanelItem4;
+    private javax.swing.JPanel RegistrationContentTopPanel;
+    private javax.swing.JPanel RegistrationEnabledPanel1;
+    private javax.swing.JPanel RegistrationMenuButtonPanel;
+    private SBSpacer RegistrationMenuButtonPanelBottom;
+    private SBTab RegistrationMenuButtonPanelTop;
+    private javax.swing.JPanel RegistrationMenuContentPanel;
+    private javax.swing.JPanel RegistrationMenuLeftSpaceFiller;
+    private javax.swing.JPanel RegistrationMenuPanel;
+    private javax.swing.JPanel RegistrationPanelMainContainer1;
+    private javax.swing.JPanel RegistrationSelectionContentPanel;
+    private javax.swing.JPanel RegistrationSettingsPanelItem1;
+    private javax.swing.JPanel RegistrationSettingsPanelItem2;
+    private javax.swing.JPanel RegistrationSettingsPanelItem8;
+    private javax.swing.JPanel RegistrationTitlePanel;
+    private javax.swing.JPanel RegistrationTitleRightPanel;
+    private javax.swing.JButton btnGenerateEvaluationUnlockCode;
+    private javax.swing.JButton btnRegistrationFormPreview;
+    private javax.swing.JCheckBox cbRegistrationEnabled;
+    private javax.swing.JLabel lEvaluationUnlockCode;
+    private javax.swing.JLabel lMaxRegistrationAttempts;
+    private SBTab lConfigurationMenuItem;
+    private SBTab lRegistrationCodeFailedUIMenuItem;
+    private SBTab lRegistrationCodeSuccessUIMenuItem;
+    private SBTab lRegistrationCodeUIMenuItem;
+    private javax.swing.JTextField tfEvaluationUnlockCode;
+    private javax.swing.JTextField tfMaxRegistrationAttempts;
+    private javax.swing.JPanel RegistrationMenuPanelBottomPanel;
+    private ContentAreaHeaderPanel contentProjectPanel;
+    private javax.swing.JPanel contentPanel;
+    private EAPropertiesPanel theEAProperties;
+    private RegistrationEnabledControl registrationEnabledPanel;
+    // End of variables declaration//GEN-END:variables
+    
+}

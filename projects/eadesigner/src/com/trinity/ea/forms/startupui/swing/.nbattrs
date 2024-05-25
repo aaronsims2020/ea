@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE attributes PUBLIC "-//NetBeans//DTD DefaultAttributes 1.0//EN" "http://www.netbeans.org/dtds/attributes-1_0.dtd">
+<attributes version="1.0">
+    <fileobject name="ButtonPanel.java">
+        <attr name="class_dependency_javax.swing.JPanel" stringvalue="ButtonPanel"/>
+    </fileobject>
+    <fileobject name="DaysLeftCounter.java">
+        <attr name="class_dependency_javax.swing.JPanel" stringvalue="DaysLeftCounter"/>
+    </fileobject>
+    <fileobject name="EAAboutButton.java">
+        <attr name="class_dependency_javax.swing.JPanel" stringvalue="EAAboutButton"/>
+    </fileobject>
+    <fileobject name="SplashImagePanel.java">
+        <attr name="class_dependency_javax.swing.JPanel" stringvalue="SplashImagePanel"/>
+    </fileobject>
+    <fileobject name="StartupWindowPanelVerticalButtonBar.java">
+        <attr name="class_dependency_javax.swing.JPanel" stringvalue="StartupWindowPanelVerticalButtonBar"/>
+    </fileobject>
+    <fileobject name="dlgStartupWindowHorizontalButtonBar.java">
+        <attr name="class_dependency_javax.swing.JDialog" stringvalue="dlgStartupWindowHorizontalButtonBar"/>
+    </fileobject>
+</attributes>
